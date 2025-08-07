@@ -6,7 +6,7 @@ import { useState } from "react";
 // import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
+
 import Image from "next/image";
 import preview from "@/assets/loginPageImage.png";
 
@@ -21,7 +21,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store/store";
 import { setUser } from "@/redux/features/authSlice";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+
 
 const customIcon = (
   <LoadingOutlined style={{ fontSize: 24, color: "#fff" }} spin />
@@ -31,7 +31,7 @@ export default function Login() {
   const [email, setEmail] = useState("yourname@gmail.com");
   /* const [password, setPassword] = useState("********");
   const [showPassword, setShowPassword] = useState(false); */
-  const [rememberMe, setRememberMe] = useState(false);
+ /*  const [rememberMe, setRememberMe] = useState(false); */
   const [login, { isLoading, error }] = useLoginMutation();
   const dispatch = useDispatch<AppDispatch>();
   const route = useRouter();
@@ -72,30 +72,30 @@ export default function Login() {
   //   };
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex ">
       {/* Left Side - Ocean Background */}
-      <div className="hidden lg:flex lg:flex-col lg:w-1/2 relative flex-1 ">
-        <div className="flex justify-start items-center  px-40 py-16 ">
+      <div className="hidden lg:flex lg:flex-col  lg:w-1/2 relative flex-1 border-r-2 border-gray-300">
+        <div className="flex justify-start items-center  px-24 pt-16 gap-4">
           {/* Logo and Brand */}
-          <div>
+          <div className="">
             <Image
               src={logo}
               height={100}
               width={100}
               alt="Logo"
-              className="w-10 h-10 object-cover object-center"
+              className="w-12 h-12 object-cover object-center"
               priority
             />
           </div>
           <div>
-            <p className="lg:text-5xl text-2xl font-bold bg-gradient-to-r from-[#11E8DB] to-[#D08087] bg-clip-text text-transparent">
+            <p className="lg:text-5xl text-2xl font-bold bg-gradient-to-r from-[#11E8DB] to-[#D08087] bg-clip-text text-transparent py-6">
               FateForge
             </p>
           </div>
         </div>
 
         {/* Preview Image Section - Fixed */}
-        <div className="flex-1 relative w-[100vh] h-[600px] px-20 pt-20">
+        <div className="flex-1 relative w-full h-[800px]  pt-16 ">
           <Image
             src={preview}
             alt="Preview"
@@ -107,19 +107,9 @@ export default function Login() {
       </div>
 
       {/* Right Side - Login Form */}
-      <div className="w-full lg:w-1/2 flex justify-center items-center flex-1">
-        <div className="w-full max-w-lg ">
-          {/* Logo and Brand */}
-          <div className="flex items-center justify-start mb-4 px-6 pt-6 xl:px-0">
-            <Image
-              src={logo}
-              height={100}
-              width={100}
-              alt="Logo"
-              className="w-10 h-10"
-              priority
-            />
-          </div>
+      <div className="w-full lg:w-1/2 mx-auto  flex-1 flex flex-col justify-center items-center">
+        <div className="w-full max-w-2xl  mx-auto">
+        
 
           <div className="flex-grow"></div>
 
@@ -134,19 +124,19 @@ export default function Login() {
 
             <form onSubmit={handleLogin} className="lg:space-y-10 space-y-6">
               {/* Email Field */}
-              <div>
-                <Label htmlFor="email" className="sr-only">
+              <div className="rounded-full">
+                <Label htmlFor="email" className="sr-only ">
                   Email address
                 </Label>
                 <TextField
                   id="email"
                   name="email"
                   type="email"
-                  label="Email"
+                  label="Email Address"
                   autoComplete="current-password"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="h-12 px-4 border border-[#DCE4E8] rounded-md focus:border-teal-500 focus:ring-teal-500 w-full bg-none"
+                  className="h-12 px-4 border  w-full bg-none"
                   required
                 />
               </div>
@@ -196,7 +186,7 @@ export default function Login() {
               )}
 
               {/* Remember Me and Forgot Password */}
-              <div className="flex items-center justify-between mt-2">
+            {/*   <div className="flex items-center justify-between mt-2">
                 <div className="flex items-center space-x-2">
                   <Checkbox
                     id="remember-me"
@@ -220,12 +210,12 @@ export default function Login() {
                     Forgot Password
                   </button>
                 </Link>
-              </div>
+              </div> */}
 
               {/* Login Button */}
               <Button
                 type="submit"
-                className="w-full h-12 bg-[#00A8CC] hover:bg-[#00A8CC80] text-white font-bold rounded-lg transition-colors"
+                className="w-full h-12 text-lg bg-[#08E9DB] hover:bg-[#08e9daaf] text-black font-bold rounded-full transition-colors mt-6"
               >
                 {isLoading ? (
                   <>
@@ -294,16 +284,16 @@ export default function Login() {
           <div className="flex-grow"></div>
 
           {/* Footer */}
-          <div className="flex flex-col justify-center items-center md:justify-between flex-wrap text-xs px-6 xl:px-0 pb-6 xl:mt-8">
-            <p className="text-[#6C7278] font-medium text-sm">
+          <div className="flex  flex-wrap text-xs px-6 xl:px-0 pb-6 xl:mt-8">
+            <p className="text-[#6C7278] font-medium text-lg">
               © 2025 HEAR FUTURE FIRST. All rights reserved.
             </p>
-            <div className="flex text-[#00A8CC] font-bold mt-1 ">
+           {/*  <div className="flex text-[#00A8CC] font-bold mt-1 ">
               <button className="border-r border-[#ACB5BB] px-2 mr-2">
                 Terms & Condition
               </button>
               <button className="">Privacy & Policy</button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
