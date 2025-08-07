@@ -21,6 +21,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store/store";
 import { setUser } from "@/redux/features/authSlice";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 
 const customIcon = (
@@ -213,6 +214,7 @@ export default function Login() {
               </div> */}
 
               {/* Login Button */}
+              <Link href={"/verification-Code"}>
               <Button
                 type="submit"
                 className="w-full h-12 text-lg bg-[#08E9DB] hover:bg-[#08e9daaf] text-black font-bold rounded-full transition-colors mt-6"
@@ -225,6 +227,7 @@ export default function Login() {
                   "Login"
                 )}
               </Button>
+              </Link>
 
               {/* Divider */}
               {/* <div className="relative">
