@@ -1,9 +1,10 @@
+import VerificationCode from '@/components/Auth/VerificationCode';
 import React from 'react';
 
 const page = () => {
     return (
         <section>
-            <p>verification code</p>
+           <VerificationCode></VerificationCode>
             
         </section>
     );
