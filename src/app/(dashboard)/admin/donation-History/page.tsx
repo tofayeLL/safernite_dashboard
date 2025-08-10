@@ -1,10 +1,11 @@
-import Cases from '@/components/Admin/Cases/Cases';
+
+import DonationHistory from '@/components/Admin/DonationHistory/DonationHistory';
 import React from 'react';
 
 const page = () => {
     return (
         <div>
-           <Cases />
+        <DonationHistory></DonationHistory>
             
         </div>
     );

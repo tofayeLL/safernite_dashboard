@@ -194,7 +194,7 @@ const AccountSection = () => {
                         </div>
 
                         <Button
-                            className="bg-[#00A8CC] hover:bg-[#00A8CC80] text-white px-8 mt-2 py-3"
+                            className="bg-[#08E9DB] hover:bg-[#0fa89e] text-black px-8 mt-2 py-3"
                         >
                             {isLoading ? "Saving" : "Save"}
                         </Button>

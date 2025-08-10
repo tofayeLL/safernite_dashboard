@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { IoClose, /* IoLocationSharp */ } from "react-icons/io5";
+import { IoClose /* IoLocationSharp */ } from "react-icons/io5";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { FiMenu } from "react-icons/fi";
 import Cookies from "js-cookie";
@@ -46,32 +46,20 @@ const NavbarSlider = ({ isOpen, toggleSidebar }: SidebarProps) => {
     {
       label: "Leaderboard Overview",
       route: "/admin/leaderboard-Overview",
-      iconPath: <HiOutlineOfficeBuilding  className="w-5 h-5" />,
+      iconPath: <HiOutlineOfficeBuilding className="w-5 h-5" />,
     },
 
     {
-      label: "Cases",
-      route: "/admin/cases",
+      label: "Donation History",
+      route: "/admin/donation-History",
+      iconPath: <FaBriefcase className="w-5 h-5" />,
+    },
+    {
+      label: "Shipping Management",
+      route: "/admin/shipping-Management",
       iconPath: <FaBriefcase className="w-5 h-5" />,
     },
 
-  /*   {
-      label: "Location",
-      route: "/admin/locations",
-      iconPath: <IoLocationSharp className="h-5 w-5" />,
-    },
-
-    {
-      label: "Training",
-      route: "/admin/training",
-      iconPath: <PiBookOpenFill className="h-5 w-5" />,
-    },
-
-    {
-      label: "Support",
-      route: "/message",
-      iconPath: <LuMessageCircleMore className="h-5 w-5" />,
-    }, */
     {
       label: "Settings",
       route: "/settings",
@@ -104,15 +92,20 @@ const NavbarSlider = ({ isOpen, toggleSidebar }: SidebarProps) => {
         <div className="flex flex-col h-full">
           {/* Logo */}
           {isOpen && (
-            <Link href="/" className="hidden lg:flex justify-start p-6">
-              <Image
-                width={250}
-                height={250}
-                className="w-14 h-14"
-                src={logo}
-                alt="logo_image"
-                priority
-              />
+            <Link href="/" className="hidden lg:flex justify-start px-6">
+              <div className="flex justify-start items-center gap-3">
+                <Image
+                  width={250}
+                  height={250}
+                  className="w-14 h-14 object-cover object-center"
+                  src={logo}
+                  alt="logo_image"
+                  priority
+                />
+                <p className="lg:text-4xl text-2xl font-bold bg-gradient-to-r from-[#11E8DB] to-[#D08087] bg-clip-text text-transparent py-6">
+                  FateForge
+                </p>
+              </div>
             </Link>
           )}
 

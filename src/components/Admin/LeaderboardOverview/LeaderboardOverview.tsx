@@ -50,7 +50,7 @@ const LeaderboardOverview = () => {
           {/* Header with filters */}
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold text-gray-900">
-              User Management
+             Leaderboard Overview
             </h2>
             <div className="flex items-center gap-4">
               <div className="relative">
