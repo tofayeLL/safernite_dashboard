@@ -4,8 +4,9 @@ import React from "react";
 import DashboardStat from "./DashboardStat";
 
 import ActivityTeamChart from "./CasesReportChart";
-import OtherDashboardStat from "./OtherDashboardStat";
-import RecentActivityTable from "./RecentActivityTable";
+import DashboardNewUsers from "./DashboardNewUsers";
+import UserManagement from "./UserManagement";
+import DonationOverview from "./DonationOverview";
 
 const DashboardLayout = () => {
   return (
@@ -14,17 +15,30 @@ const DashboardLayout = () => {
       <DashboardStat />
       
       <div>
-        <div className="flex w-[100%] justify-center items-center gap-6">
-          <div className="w-[70%]">
+        <div className="  grid grid-cols-3 gap-6">
+          <div className="col-span-2">
             <ActivityTeamChart />
           </div>
-          <div className="w-[30%] ">
-            <OtherDashboardStat></OtherDashboardStat>
+          <div className="col-span-1">
+            <DashboardNewUsers></DashboardNewUsers>
           </div>
         </div>    
       </div>
 
-      <RecentActivityTable></RecentActivityTable>
+
+
+      <div>
+        <div className="  grid grid-cols-3 gap-6">
+          <div className="col-span-2">
+              <UserManagement></UserManagement>
+          </div>
+          <div className="col-span-1">
+            <DonationOverview></DonationOverview>
+          </div>
+        </div>    
+      </div>
+
+    
     </section>
   );
 };
