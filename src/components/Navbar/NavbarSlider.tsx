@@ -44,8 +44,8 @@ const NavbarSlider = ({ isOpen, toggleSidebar }: SidebarProps) => {
       iconPath: <BsPeople className="h-5 w-5" />,
     },
     {
-      label: "Responders Management",
-      route: "/admin/responders_Management",
+      label: "Leaderboard Overview",
+      route: "/admin/leaderboard-Overview",
       iconPath: <HiOutlineOfficeBuilding  className="w-5 h-5" />,
     },
 
