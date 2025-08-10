@@ -23,17 +23,17 @@ console.log("...",allStatsData); */
   return (
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
   {/* Card 1 */}
-  <div className="bg-white rounded-xl shadow py-16">
+  <div className="bg-white rounded-md shadow-xs py-16">
     <div className="flex flex-col items-center text-center">
       <h1 className="font-medium text-lg text-gray-600">
         Total Verified User
       </h1>
-      <p className="text-3xl font-bold text-gray-900 mt-3">360</p>
+      <p className="text-3xl font-bold text-gray-900 mt-3 ">360</p>
     </div>
   </div>
 
   {/* Card 2 */}
-  <div className="bg-white rounded-xl shadow py-16">
+  <div className="bg-white rounded-md shadow-xs py-16">
     <div className="flex flex-col items-center text-center">
       <h1 className="font-medium text-lg text-gray-600">
        Total Post
@@ -43,7 +43,7 @@ console.log("...",allStatsData); */
   </div>
 
   {/* Card 3 */}
-  <div className="bg-white rounded-xl shadow py-16">
+  <div className="bg-white rounded-md shadow-xs py-16">
     <div className="flex flex-col items-center text-center">
       <h1 className="font-medium text-lg text-gray-600">
        Selected Parson
@@ -53,7 +53,7 @@ console.log("...",allStatsData); */
   </div>
 
   {/* Card 4 */}
-  <div className="bg-white rounded-xl shadow py-16">
+  <div className="bg-white rounded-md shadow-xs py-16">
     <div className="flex flex-col items-center text-center">
       <h1 className="font-medium text-lg text-gray-600">
         Total Earning

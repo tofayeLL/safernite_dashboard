@@ -74,7 +74,7 @@ export default function DashboardNewUsers() {
   const hiddenUsersCount = expanded ? 0 : Math.max(users.length - 5, 0);
 
   return (
-    <div className="bg-white p-6 rounded-2xl flex flex-col shadow ">
+    <div className="bg-white p-6 rounded-2xl flex flex-col shadow-xs ">
       {/* New Users Today Card */}
       <div className="mb-6 ">
         <CardHeader className="flex flex-row justify-between items-center p-0 mb-4">

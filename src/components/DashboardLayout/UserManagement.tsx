@@ -46,7 +46,7 @@ const UserManagement = () => {
 
   return (
     <section>
-      <div className="bg-white p-6 rounded-2xl shadow">
+      <div className="bg-white p-6 rounded-2xl shadow-xs">
         <div className="w-full space-y-4">
           {/* Header with filters */}
           <div className="flex items-center justify-between">

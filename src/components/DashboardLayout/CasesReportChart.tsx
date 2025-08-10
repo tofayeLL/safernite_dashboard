@@ -81,14 +81,14 @@ export default function CasesReportChart() {
   };
 
   return (
-    <Card className="w-full bg-[#FFF] flex flex-col justify-end item-end rounded-2xl  shadow">
+    <Card className="w-full bg-[#FFF] flex flex-col justify-end item-end rounded-2xl  shadow-xs">
       <CardHeader className="flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-xl md:text-2xl font-semibold">
           Activity Team
         </CardTitle>
         <div className="hidden md:flex items-center gap-6">
           <div className="flex justify-center items-center gap-2">
-            <p className="bg-[#E35314] h-4 w-4 rounded"></p>
+            <p className="bg-[#08E9DB] h-4 w-4 rounded"></p>
             <h1>Earning</h1>
           </div>
           <Select value={selectedCategory} onValueChange={handleCategoryChange}>
