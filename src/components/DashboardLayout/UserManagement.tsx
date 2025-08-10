@@ -46,7 +46,7 @@ const UserManagement = () => {
 
   return (
     <section>
-      <div className="bg-white p-6 rounded-2xl">
+      <div className="bg-white p-6 rounded-2xl shadow">
         <div className="w-full space-y-4">
           {/* Header with filters */}
           <div className="flex items-center justify-between">
@@ -83,7 +83,7 @@ const UserManagement = () => {
           </div>
 
           {/* Table */}
-          <div className="rounded-lg border bg-white overflow-hidden">
+          <div className="rounded-lg border bg-white overflow-hidden ">
             <Table className="">
               <TableHeader className="bg-[#F8FAFC]">
                 <TableRow className="border-b">

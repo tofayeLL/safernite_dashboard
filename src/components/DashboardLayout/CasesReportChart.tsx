@@ -81,7 +81,7 @@ export default function CasesReportChart() {
   };
 
   return (
-    <Card className="w-full bg-[#FFF] flex flex-col justify-end item-end rounded-2xl">
+    <Card className="w-full bg-[#FFF] flex flex-col justify-end item-end rounded-2xl  shadow">
       <CardHeader className="flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-xl md:text-2xl font-semibold">
           Activity Team
