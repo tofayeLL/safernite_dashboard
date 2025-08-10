@@ -38,13 +38,16 @@ import { usePathname, useRouter } from "next/navigation";
   };
 } */
 
-const PostManagement = () => {
-  const [selectedCategory, setSelectedCategory] = useState("wish");
+const BlogPost = () => {
+  const [selectedCategory, setSelectedCategory] = useState("blog");
 
   const router = useRouter();
+
    const pathname = usePathname();
 
-    // Set initial category based on route
+
+
+  // Set initial category based on route
   useEffect(() => {
     if (pathname.includes("blogPost-Management")) {
       setSelectedCategory("blog");
@@ -68,7 +71,7 @@ const PostManagement = () => {
         <div className="w-full space-y-4">
           {/* Header with filters */}
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-semibold text-gray-900">Wish Post</h2>
+            <h2 className="text-xl font-semibold text-gray-900">Blog Post</h2>
             <div className="flex items-center gap-4">
               <div className="relative">
                 <Input
@@ -80,18 +83,18 @@ const PostManagement = () => {
               </div>
 
               <Select
-                value={selectedCategory}
-                onValueChange={handleCategoryChange}
-              >
-                <SelectTrigger className="">
-                  <Filter className="h-4 w-4" />
-                  Filter
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem   value="wish"    className="data-[state=checked]:bg-[#08E9DB] hover:bg-[#08E9DB]/20">Wish Post</SelectItem>
-                  <SelectItem value="blog" className="data-[state=checked]:bg-[#08E9DB] hover:bg-[#08E9DB]/20">Blog Post</SelectItem>
-                </SelectContent>
-              </Select>
+                             value={selectedCategory}
+                             onValueChange={handleCategoryChange}
+                           >
+                             <SelectTrigger className="">
+                               <Filter className="h-4 w-4" />
+                               Filter
+                             </SelectTrigger>
+                             <SelectContent>
+                               <SelectItem   value="wish"    className="data-[state=checked]:bg-[#08E9DB] hover:bg-[#08E9DB]/20">Wish Post</SelectItem>
+                               <SelectItem value="blog" className="data-[state=checked]:bg-[#08E9DB] hover:bg-[#08E9DB]/20">Blog Post</SelectItem>
+                             </SelectContent>
+                           </Select>
             </div>
           </div>
 
@@ -174,4 +177,4 @@ const PostManagement = () => {
   );
 };
 
-export default PostManagement;
+export default BlogPost;
