@@ -39,8 +39,8 @@ const NavbarSlider = ({ isOpen, toggleSidebar }: SidebarProps) => {
       iconPath: <CiUser className="h-5 w-5" />,
     },
     {
-      label: "Staff Management",
-      route: "/admin/staff_Management",
+      label: "Post Management",
+      route: "/admin/post-Management",
       iconPath: <BsPeople className="h-5 w-5" />,
     },
     {

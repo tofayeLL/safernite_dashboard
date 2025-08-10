@@ -1,10 +1,11 @@
-import StaffManagement from '@/components/Admin/StaffManagement/StaffManagement';
+
+import PostManagement from '@/components/Admin/PostManagement/PostManagement';
 import React from 'react';
 
 const page = () => {
     return (
         <div>
-           <StaffManagement />
+         <PostManagement></PostManagement>
             
         </div>
     );
