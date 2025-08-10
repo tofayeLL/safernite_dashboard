@@ -1,16 +1,15 @@
 "use client";
 
-import { useGetAllAdminAnalysisQuery } from "@/redux/api/adminApi";
 import React from "react";
-import { Loading } from "../ui/loading";
+
 
 
 const DashboardStat = () => {
-const {data:allStatsData, isLoading} = useGetAllAdminAnalysisQuery({})
+/* const {data:allStatsData, isLoading} = useGetAllAdminAnalysisQuery({})
 
-console.log("...",allStatsData);
+console.log("...",allStatsData); */
 
-  if (isLoading) {
+/*   if (isLoading) {
      return (
        <div className="flex items-center justify-center min-h-[70vh] bg-white">
          <div className="flex items-center justify-center space-x-2">
@@ -18,7 +17,7 @@ console.log("...",allStatsData);
          </div>
        </div>
      );
-   }
+   } */
  
 
   return (
@@ -27,9 +26,9 @@ console.log("...",allStatsData);
   <div className="bg-white rounded-xl shadow py-16">
     <div className="flex flex-col items-center text-center">
       <h1 className="font-medium text-lg text-gray-600">
-       Total Reports
+        Total Verified User
       </h1>
-      <p className="text-3xl font-bold text-gray-900 mt-3">{allStatsData?.result?.issueReports}</p>
+      <p className="text-3xl font-bold text-gray-900 mt-3">360</p>
     </div>
   </div>
 
@@ -37,9 +36,9 @@ console.log("...",allStatsData);
   <div className="bg-white rounded-xl shadow py-16">
     <div className="flex flex-col items-center text-center">
       <h1 className="font-medium text-lg text-gray-600">
-       Escalated Cases
+       Total Post
       </h1>
-      <p className="text-3xl font-bold text-gray-900 mt-3">{allStatsData?.result?.legalCases}K</p>
+      <p className="text-3xl font-bold text-gray-900 mt-3">250</p>
     </div>
   </div>
 
@@ -47,9 +46,9 @@ console.log("...",allStatsData);
   <div className="bg-white rounded-xl shadow py-16">
     <div className="flex flex-col items-center text-center">
       <h1 className="font-medium text-lg text-gray-600">
-       Flagged Locations
+       Selected Parson
       </h1>
-      <p className="text-3xl font-bold text-gray-900 mt-3">{allStatsData?.result?.flaggesLocations}</p>
+      <p className="text-3xl font-bold text-gray-900 mt-3">40%</p>
     </div>
   </div>
 
@@ -57,9 +56,9 @@ console.log("...",allStatsData);
   <div className="bg-white rounded-xl shadow py-16">
     <div className="flex flex-col items-center text-center">
       <h1 className="font-medium text-lg text-gray-600">
-        Active Shelter Staff
+        Total Earning
       </h1>
-      <p className="text-3xl font-bold text-gray-900 mt-3">{allStatsData?.result?.staffCount}</p>
+      <p className="text-3xl font-bold text-gray-900 mt-3">$25,500</p>
     </div>
   </div>
 </div>

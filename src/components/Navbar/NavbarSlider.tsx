@@ -7,7 +7,7 @@ import { IoClose, /* IoLocationSharp */ } from "react-icons/io5";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { FiMenu } from "react-icons/fi";
 import Cookies from "js-cookie";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/saferniteLogo (2).png";
 import { RxDashboard } from "react-icons/rx";
 import { useDispatch } from "react-redux";
 import { logout } from "@/redux/features/authSlice";
@@ -123,10 +123,10 @@ const NavbarSlider = ({ isOpen, toggleSidebar }: SidebarProps) => {
                 <li key={item?.route}>
                   <Link
                     href={item?.route}
-                    className={`flex items-center gap-2 px-4 py-2 mb-2 rounded-lg hover:bg-[#00A8CC] hover:text-white transition-colors duration-300 ease-in-out 
+                    className={`flex items-center gap-2 px-4 py-2 mb-2 rounded-lg hover:bg-[#08E9DB] hover:text-black transition-colors duration-300 ease-in-out 
                     ${
                       path === item?.route
-                        ? "bg-[#00A8CC] text-white"
+                        ? "bg-[#08E9DB] text-black"
                         : "text-[#817F9B]"
                     }`}
                   >
