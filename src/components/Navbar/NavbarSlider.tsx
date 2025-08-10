@@ -34,8 +34,8 @@ const NavbarSlider = ({ isOpen, toggleSidebar }: SidebarProps) => {
     { label: "Dashboard", route: "/", iconPath: <RxDashboard /> },
 
     {
-      label: "Admin Management",
-      route: "/admin/admin_Management",
+      label: "User Management",
+      route: "/admin/user-Management",
       iconPath: <CiUser className="h-5 w-5" />,
     },
     {
