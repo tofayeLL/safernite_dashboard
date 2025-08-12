@@ -1,4 +1,4 @@
-import BlogPost from '@/components/Admin/PostManagement/BlogPost';
+import BlogPost from '@/components/Admin/PostManagement/BlogPost/BlogPost';
 import React from 'react';
 
 const Page = () => {

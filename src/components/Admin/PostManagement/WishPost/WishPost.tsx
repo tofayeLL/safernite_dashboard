@@ -28,7 +28,6 @@ import { Button } from "@/components/ui/button";
 import { usePathname, useRouter } from "next/navigation";
 import { WishPostModal } from "./WishPostModal";
 
-
 /* interface ActivityData {
   id: string;
   date: string;
@@ -43,7 +42,7 @@ import { WishPostModal } from "./WishPostModal";
 
 const WishPost = () => {
   const [selectedCategory, setSelectedCategory] = useState("wish");
-   const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [selectedId, setSelectedId] = useState("");
 
   const handleViewClick = (id: string) => {
@@ -62,8 +61,6 @@ const WishPost = () => {
       setSelectedCategory("wish");
     }
   }, [pathname]);
-
-
 
   const handleCategoryChange = (value: string) => {
     setSelectedCategory(value);
@@ -173,19 +170,17 @@ const WishPost = () => {
 
                   <TableCell className="text-gray-700  space-x-3  ">
                     <Button
-                    onClick={() => handleViewClick("123")}
+                      onClick={() => handleViewClick("123")}
                       variant="outline"
                       className="bg-blue-50 w-[40%] cursor-pointer text-blue-600 border-blue-200 hover:bg-blue-100 hover:text-blue-700 hover:border-blue-300 px-4 py-2 rounded-sm font-medium transition-colors"
                     >
                       View
                     </Button>
-                      <WishPostModal
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        itemId={selectedId}
-      />
-
-                 
+                    <WishPostModal
+                      isOpen={isOpen}
+                      onClose={() => setIsOpen(false)}
+                      itemId={selectedId}
+                    />
 
                     <Button
                       variant="outline"
