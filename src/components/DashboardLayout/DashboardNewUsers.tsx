@@ -4,7 +4,7 @@ import { useState } from "react";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { TrendingUp, ChevronDown } from "lucide-react";
+import { ChevronDown, MoveUp } from "lucide-react";
 
 export default function DashboardNewUsers() {
   const [activeTab, setActiveTab] = useState("Daily");
@@ -102,8 +102,8 @@ export default function DashboardNewUsers() {
             <div>
               <div className="text-3xl font-bold text-gray-900">150</div>
               <div className="flex items-center mt-1">
-                <Badge className="text-xs bg-green-50 text-green-600 border border-green-100 rounded-full py-1 font-medium">
-                  <TrendingUp className="h-3 w-3 text-green-500 mr-1" />
+                <Badge className="text-xs bg-white text-gray-800 border border-gray-200 rounded-full py-1 font-medium">
+                  <MoveUp className="h-5 w-5 text-green-500 " />
                   10% today
                 </Badge>
               </div>

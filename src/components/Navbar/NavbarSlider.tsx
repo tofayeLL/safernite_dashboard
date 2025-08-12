@@ -11,13 +11,17 @@ import logo from "@/assets/saferniteLogo (2).png";
 import { RxDashboard } from "react-icons/rx";
 import { useDispatch } from "react-redux";
 import { logout } from "@/redux/features/authSlice";
-import { CiUser } from "react-icons/ci";
+
 import { IoSettingsOutline } from "react-icons/io5";
 // import { PiBookOpenFill } from "react-icons/pi";
-import { BsPeople } from "react-icons/bs";
-import { FaBriefcase } from "react-icons/fa6";
+
+import { FaUsersRectangle } from "react-icons/fa6";
 // import { LuMessageCircleMore } from "react-icons/lu";
-import { HiOutlineOfficeBuilding } from "react-icons/hi";
+// import { HiOutlineOfficeBuilding } from "react-icons/hi";
+import { TbUserScan } from "react-icons/tb";
+import { CgNotes } from "react-icons/cg";
+import { CalendarClock } from "lucide-react";
+import { LiaShippingFastSolid } from "react-icons/lia";
 
 // Sidebar Props
 interface SidebarProps {
@@ -36,28 +40,29 @@ const NavbarSlider = ({ isOpen, toggleSidebar }: SidebarProps) => {
     {
       label: "User Management",
       route: "/admin/user-Management",
-      iconPath: <CiUser className="h-5 w-5" />,
+      iconPath: <TbUserScan className="h-5 w-5" />,
     },
     {
       label: "Post Management",
       route: "/admin/post-Management",
-      iconPath: <BsPeople className="h-5 w-5" />,
+      iconPath: <FaUsersRectangle className="h-5 w-5" />,
     },
     {
       label: "Leaderboard Overview",
       route: "/admin/leaderboard-Overview",
-      iconPath: <HiOutlineOfficeBuilding className="w-5 h-5" />,
+      iconPath: <CgNotes className="w-5 h-5" />,
     },
 
     {
       label: "Donation History",
       route: "/admin/donation-History",
-      iconPath: <FaBriefcase className="w-5 h-5" />,
+
+      iconPath: <CalendarClock className="w-5 h-5" />,
     },
     {
       label: "Shipping Management",
       route: "/admin/shipping-Management",
-      iconPath: <FaBriefcase className="w-5 h-5" />,
+      iconPath: <LiaShippingFastSolid className="w-5 h-5" />,
     },
 
     /* {

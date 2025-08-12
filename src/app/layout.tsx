@@ -15,7 +15,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Safernite - Donation",
+  title: "FateForge",
   description: "UNSCRIPTED LIVES, UNTOLD WORLDS.",
 };
 

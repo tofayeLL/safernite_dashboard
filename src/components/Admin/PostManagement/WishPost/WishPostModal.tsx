@@ -41,7 +41,7 @@ export const WishPostModal: React.FC<WishPostModalProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[50%]">
+      <DialogContent className="sm:max-w-[45%]">
         <DialogHeader>
           <DialogTitle>Wish Post Details</DialogTitle>
         </DialogHeader>

@@ -3,7 +3,7 @@
 import React from "react";
 import DashboardStat from "./DashboardStat";
 
-import ActivityTeamChart from "./CasesReportChart";
+import EarningReportChart from "./EarningReportChart";
 import DashboardNewUsers from "./DashboardNewUsers";
 import UserManagement from "./UserManagement";
 import DonationOverview from "./DonationOverview";
@@ -17,7 +17,7 @@ const DashboardLayout = () => {
       <div>
         <div className="  grid grid-cols-3 gap-6">
           <div className="col-span-2">
-            <ActivityTeamChart />
+            <EarningReportChart />
           </div>
           <div className="col-span-1">
             <DashboardNewUsers></DashboardNewUsers>

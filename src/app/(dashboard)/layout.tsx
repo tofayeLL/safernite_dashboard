@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import TopNavbar from "@/components/Navbar/TopNavbar";
 
 export const metadata: Metadata = {
-  title: "HER FUTURE FIRST",
+  title: "FateForge",
   description: "UNSCRIPTED LIVES, UNTOLD WORLDS.",
 };
 

@@ -1,6 +1,13 @@
 "use client";
 
-import { Pie, PieChart, Cell, ResponsiveContainer, Tooltip, PieLabelRenderProps } from "recharts";
+import {
+  Pie,
+  PieChart,
+  Cell,
+  ResponsiveContainer,
+  Tooltip,
+  PieLabelRenderProps,
+} from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 type ChartData = {
@@ -39,8 +46,10 @@ const renderCustomizedLabel = ({
   const safeInnerRadius = typeof innerRadius === "number" ? innerRadius : 0;
   const safeOuterRadius = typeof outerRadius === "number" ? outerRadius : 0;
   const radius = safeInnerRadius + (safeOuterRadius - safeInnerRadius) * 0.5;
-  const x = typeof cx === "number" ? cx + radius * Math.cos(-midAngle * RADIAN) : 0;
-  const y = typeof cy === "number" ? cy + radius * Math.sin(-midAngle * RADIAN) : 0;
+  const x =
+    typeof cx === "number" ? cx + radius * Math.cos(-midAngle * RADIAN) : 0;
+  const y =
+    typeof cy === "number" ? cy + radius * Math.sin(-midAngle * RADIAN) : 0;
 
   return (
     <text
@@ -61,8 +70,8 @@ export default function DonationOverview() {
 
   return (
     <Card className="w-full  bg-white shadow-xs">
-      <CardHeader className="pb-4">
-        <CardTitle className="text-lg font-semibold text-gray-800">
+      <CardHeader className="pb-0">
+        <CardTitle className="text-2xl font-semibold text-gray-800">
           Donation Overview
         </CardTitle>
       </CardHeader>
@@ -88,7 +97,8 @@ export default function DonationOverview() {
               <Tooltip
                 content={({ active, payload }) => {
                   if (active && payload && payload.length) {
-                    const percentage = ((payload[0].value as number) / total) * 100;
+                    const percentage =
+                      ((payload[0].value as number) / total) * 100;
                     return (
                       <div className="rounded-lg border bg-white p-3 shadow-sm">
                         <p className="font-medium text-gray-900">
@@ -107,23 +117,25 @@ export default function DonationOverview() {
           </ResponsiveContainer>
         </div>
 
-        <div className="mt-6 space-y-3">
+        <div className="mt-6 space-y-3  grid grid-cols-2">
           {data.map((item) => {
-            const percentage = (item.value / total) * 100;
+            // const percentage = (item?.value / total) * 100;
             return (
-              <div key={item.name} className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div
-                    className="h-4 w-4 rounded-sm"
-                    style={{ backgroundColor: item.color }}
-                  />
-                  <span className="text-sm font-medium text-gray-700">
-                    {item.name}
-                  </span>
+              <div key={item?.name}>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="h-4 w-4 rounded-sm"
+                      style={{ backgroundColor: item?.color }}
+                    />
+                    <span className="text-sm font-medium text-gray-700">
+                      {item?.name}
+                    </span>
+                  </div>
+                  {/*   <span className="text-sm font-medium text-gray-900">
+                  {percentage?.toFixed(1)}%
+                </span> */}
                 </div>
-                <span className="text-sm font-medium text-gray-900">
-                  {percentage.toFixed(1)}%
-                </span>
               </div>
             );
           })}
