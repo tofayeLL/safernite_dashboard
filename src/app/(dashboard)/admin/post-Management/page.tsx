@@ -1,11 +1,11 @@
 
-import PostManagement from '@/components/Admin/PostManagement/PostManagement';
+import WishPost from '@/components/Admin/PostManagement/WishPost/WishPost';
 import React from 'react';
 
 const page = () => {
     return (
         <div>
-         <PostManagement></PostManagement>
+         <WishPost />
             
         </div>
     );
