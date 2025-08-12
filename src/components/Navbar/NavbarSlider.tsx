@@ -60,6 +60,11 @@ const NavbarSlider = ({ isOpen, toggleSidebar }: SidebarProps) => {
       iconPath: <FaBriefcase className="w-5 h-5" />,
     },
 
+    /* {
+      label: "Notification",
+      route: "/notification",
+      iconPath: <IoSettingsOutline className="h-5 w-5" />,
+    }, */
     {
       label: "Settings",
       route: "/settings",

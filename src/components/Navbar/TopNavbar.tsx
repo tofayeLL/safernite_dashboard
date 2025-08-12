@@ -12,10 +12,12 @@ import {
   useUpdateNotificationMutation,
 } from "@/redux/api/notifiyApi";
 import { formatChatDate } from "@/lib/formateTimeStamp";
-
+import { IoMdNotificationsOutline } from "react-icons/io";
 import userImage from "@/assets/images/userImage.jpg";
 import { useSelector } from "react-redux";
 import { useAuth } from "@/redux/features/authSlice";
+import { Badge } from "antd";
+import Link from "next/link";
 
 // import Link from "next/link";
 
@@ -45,7 +47,7 @@ const TopNavbar = () => {
   console.log("to navbar",authState);
   console.log("to navbar",authState?.adminInfo?.profileImage);
 
-  // const unreadCount = notifications.filter((n) => !n.isRead).length;
+  const unreadCount = notifications.filter((n) => !n.isRead).length;
 
   const handleMarkAsRead = async (id: string) => {
     const payload: UpdateNotificationPayload = {
@@ -79,14 +81,16 @@ const TopNavbar = () => {
           </div>
          </Link> */}
           {/* Notification Icon */}
-        {/*   <div
+         <Link href={"/notification"}>
+          <div
             className="bg-white shadow rounded-full px-2 py-1 h-full cursor-pointer"
-            onClick={() => setIsModalOpen(true)}
+           /*  onClick={() => setIsModalOpen(true)} */
           >
             <Badge count={unreadCount} size="small">
               <IoMdNotificationsOutline className="w-6 h-6 text-gray-500" />
             </Badge>
-          </div> */}
+          </div>
+         </Link>
 
           {/* Profile */}
           <div >
