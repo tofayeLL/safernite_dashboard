@@ -67,7 +67,7 @@ const LeaderboardOverview = () => {
                 onValueChange={handleCategoryChange}
               >
                 <SelectTrigger className="">
-                  <Filter className="h-4 w-4" />
+                  <Filter className="h-4 w-4"/>
                   Filter
                 </SelectTrigger>
                 <SelectContent>
@@ -85,28 +85,28 @@ const LeaderboardOverview = () => {
             <Table className="">
               <TableHeader className="bg-[#F8FAFC]">
                 <TableRow className="border-b">
-                  <TableHead className=" text-base font-semibold">
+                  <TableHead className="      text-base font-semibold">
                     Sl No:
                   </TableHead>
-                  <TableHead className=" text-base font-semibold">
+                  <TableHead className="text-base font-semibold">
                     User Name
                   </TableHead>
-                  <TableHead className=" text-base font-semibold">
+                  <TableHead className="text-base font-semibold">
                     Product Name
                   </TableHead>
-                  <TableHead className=" text-base font-semibold">
+                  <TableHead className="text-base font-semibold">
                     End Date
                   </TableHead>
-                  <TableHead className=" text-base font-semibold">
+                  <TableHead className="text-base font-semibold">
                     Goal Amount
                   </TableHead>
-                  <TableHead className=" text-base font-semibold">
+                  <TableHead className="text-base font-semibold">
                     Raised Amount
                   </TableHead>
-                  <TableHead className=" text-base font-semibold">
+                  <TableHead className="text-base font-semibold">
                     Funding Percentage
                   </TableHead>
-                  <TableHead className=" text-base font-semibold">
+                  <TableHead className="text-base font-semibold">
                     Action
                   </TableHead>
                 </TableRow>

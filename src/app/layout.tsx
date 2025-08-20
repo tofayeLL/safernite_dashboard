@@ -16,7 +16,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "FateForge",
-  description: "UNSCRIPTED LIVES, UNTOLD WORLDS.",
+  description: "Donation",
 };
 
 export default function RootLayout({
