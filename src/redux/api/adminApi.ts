@@ -3,6 +3,30 @@ import { baseApi } from "./baseApi";
 export const adminApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
 
+
+    getAllStats: builder.query({
+      query: () => ({
+        url: `/admin/overview`,
+        method: "GET",
+      }),
+      providesTags: ["admins"],
+    }),
+
+      /* getMyProfile: builder.query({
+      query: () => ({
+        url: `/user/profile`,
+        method: "GET",
+      }),
+      providesTags: ["admins"],
+    }), */
+
+
+
+
+
+
+
+
     getAllAdmins: builder.query({
       query: () => ({
         url: `/admin/all`,
@@ -10,13 +34,7 @@ export const adminApi = baseApi.injectEndpoints({
       }),
       providesTags: ["admins"],
     }),
-    getMyProfile: builder.query({
-      query: () => ({
-        url: `/user/profile`,
-        method: "GET",
-      }),
-      providesTags: ["admins"],
-    }),
+  
       createAdmin: builder.mutation({
       query: (body) => ({
         url: `/admin/create`,
@@ -25,13 +43,7 @@ export const adminApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["admins"],
     }),
-    getAllStaffs: builder.query({
-      query: () => ({
-        url: `/admin/staffs`,
-        method: "GET",
-      }),
-      providesTags: ["admins"],
-    }),
+    
     getAllResponders: builder.query({
       query: () => ({
         url: `/admin/responders`,
@@ -58,8 +70,11 @@ export const adminApi = baseApi.injectEndpoints({
 });
 
 export const {
+  useGetAllStatsQuery,
+
+
+
   useGetAllAdminsQuery,
-  useGetAllStaffsQuery,
   useGetAllRespondersQuery,
   useGetAllCasesQuery,
   useGetAllAdminAnalysisQuery,

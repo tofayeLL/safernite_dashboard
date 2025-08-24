@@ -1,15 +1,17 @@
 "use client";
 
 import React from "react";
+import { Loading } from "../ui/loading";
+import { useGetAllStatsQuery } from "@/redux/api/adminApi";
 
 
 
 const DashboardStat = () => {
-/* const {data:allStatsData, isLoading} = useGetAllAdminAnalysisQuery({})
+const {data:allStatsData, isLoading} = useGetAllStatsQuery({})
 
-console.log("...",allStatsData); */
+console.log("admin stats",allStatsData);
 
-/*   if (isLoading) {
+  if (isLoading) {
      return (
        <div className="flex items-center justify-center min-h-[70vh] bg-white">
          <div className="flex items-center justify-center space-x-2">
@@ -17,7 +19,7 @@ console.log("...",allStatsData); */
          </div>
        </div>
      );
-   } */
+   }
  
 
   return (
@@ -28,7 +30,7 @@ console.log("...",allStatsData); */
       <h1 className="font-medium text-lg text-gray-600">
         Total Verified User
       </h1>
-      <p className="text-3xl font-bold text-gray-900 mt-3 ">360</p>
+      <p className="text-3xl font-bold text-gray-900 mt-3 ">{allStatsData?.result?.totalUsers}</p>
     </div>
   </div>
 
@@ -38,7 +40,7 @@ console.log("...",allStatsData); */
       <h1 className="font-medium text-lg text-gray-600">
        Total Post
       </h1>
-      <p className="text-3xl font-bold text-gray-900 mt-3">250</p>
+      <p className="text-3xl font-bold text-gray-900 mt-3">{allStatsData?.result?.totalPost}</p>
     </div>
   </div>
 
@@ -48,7 +50,7 @@ console.log("...",allStatsData); */
       <h1 className="font-medium text-lg text-gray-600">
        Selected Parson
       </h1>
-      <p className="text-3xl font-bold text-gray-900 mt-3">40%</p>
+      <p className="text-3xl font-bold text-gray-900 mt-3">{allStatsData?.result?.selectedPercentage}%</p>
     </div>
   </div>
 
@@ -58,7 +60,7 @@ console.log("...",allStatsData); */
       <h1 className="font-medium text-lg text-gray-600">
         Total Earning
       </h1>
-      <p className="text-3xl font-bold text-gray-900 mt-3">$25,500</p>
+      <p className="text-3xl font-bold text-gray-900 mt-3">${allStatsData?.result?.totalDonation}</p>
     </div>
   </div>
 </div>

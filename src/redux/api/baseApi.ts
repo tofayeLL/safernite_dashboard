@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store/store";
 
 // const baseUrl = "http://localhost:4013/api/v1";
-const baseUrl = "https://poojithatanjore-backend.vercel.app/api/v1";
+const baseUrl = "https://safernite-backend.vercel.app/api/v1";
 
 export const baseApi = createApi({
   reducerPath: "api",
@@ -22,7 +22,14 @@ export const baseApi = createApi({
   endpoints: () => ({}),
   tagTypes: [
     "users",
-    "wardens",
+    "posts",
+    "shipments",
+
+
+
+
+
+  
     "profile",
     "report",
     "admin",

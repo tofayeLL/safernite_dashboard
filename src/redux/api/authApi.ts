@@ -3,6 +3,21 @@ import { baseApi } from "./baseApi";
 
 export const AuthApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+
+     login: builder.mutation({
+      query: ({ body }) => ({
+        url: `/auth/login`,
+        method: "POST",
+        body: body,
+      }),
+    }),
+
+
+
+
+
+
+
     createUserByAdmin: builder.mutation({
       query: (body) => ({
         url: `/users/signup-verification`,
@@ -10,13 +25,7 @@ export const AuthApi = baseApi.injectEndpoints({
         body: body,
       }),
     }),
-    login: builder.mutation({
-      query: ({ body }) => ({
-        url: `/admin/login`,
-        method: "POST",
-        body: body,
-      }),
-    }),
+   
     forgotPassword: builder.mutation({
       query: (data: { email: string }) => {
         return {
@@ -55,8 +64,11 @@ export const AuthApi = baseApi.injectEndpoints({
 });
 
 export const {
-  useCreateUserByAdminMutation,
   useLoginMutation,
+
+
+
+  useCreateUserByAdminMutation,
   useForgotPasswordMutation,
   useOtpUserMutation,
   useResetPasswordMutation,

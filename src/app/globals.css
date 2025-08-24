@@ -136,12 +136,29 @@
   }
 }
 
-.MuiInputBase-root{
-  border-radius: 100px !important;
-  padding-left: 10px;
-  padding-right: 10px;
-  
+/* Fix autofill background for legend-style input fields */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: #1C2634 !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
+
+/* Optional: More specific targeting for your form inputs */
+.legend-input:-webkit-autofill,
+.legend-input:-webkit-autofill:hover,
+.legend-input:-webkit-autofill:focus,
+.legend-input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: #1C2634 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Fix focus border color for input fields */
+   /* Custom focus styles for the input field */
+   
 
 /* .bg-black\/50 {
     background-color: color-mix(in srgb, #0000002d 5%, transparent) !important;

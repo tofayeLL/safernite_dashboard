@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import {
@@ -12,6 +13,8 @@ import {
 import Image from "next/image";
 import userImage from "@/assets/User.png";
 import { Badge } from "@/components/ui/badge";
+import { useGetAllShipmentsQuery } from "@/redux/api/shipmentApi";
+import { Loading } from "@/components/ui/loading";
 
 /* interface ActivityData {
   id: string;
@@ -26,6 +29,20 @@ import { Badge } from "@/components/ui/badge";
 } */
 
 const ShippingManagement = () => {
+  const { data: allShipments, isLoading } = useGetAllShipmentsQuery({});
+
+  console.log("all shipments", allShipments);
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[70vh] bg-white">
+        <div className="flex items-center justify-center space-x-2">
+          <Loading></Loading>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <section>
       <div className="bg-white p-6 rounded-2xl shadow">
@@ -69,34 +86,36 @@ const ShippingManagement = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                <TableRow className="border-b last:border-b-0">
-                  <TableCell className="font-medium text-gray-700 py-3 flex justify-start items-center gap-2">
-                    <span>
-                      <Image
-                        src={userImage}
-                        alt="image"
-                        width={40}
-                        height={40}
-                        className="rounded-sm object-cover w-10 h-10"
-                      />
-                    </span>{" "}
-                    Mia Johnson
-                  </TableCell>
-                  <TableCell>shamim03@gmail.com</TableCell>
-                  <TableCell className="py-3">+123 456 7899</TableCell>
-                  <TableCell className="py-3">USA</TableCell>
-                  <TableCell className="py-3">1245 Maple Street</TableCell>
-                  <TableCell className="py-3">Denver</TableCell>
-                  <TableCell className="py-3">Colorado </TableCell>
-                  <TableCell className="py-3">
-                    <Badge
-                      variant="secondary"
-                      className="bg-[#FFF7E8] text-[#FAAD14] px-5 py-1 text-base"
-                    >
-                      Pending
-                    </Badge>
-                  </TableCell>
-                </TableRow>
+                {allShipments?.result?.map((item: any) => (
+                  <TableRow key={item.id} className="border-b last:border-b-0">
+                    <TableCell className="font-medium text-gray-700 py-3 flex justify-start items-center gap-2">
+                      <span>
+                        <Image
+                          src={userImage}
+                          alt="image"
+                          width={40}
+                          height={40}
+                          className="rounded-sm object-cover w-10 h-10"
+                        />
+                      </span>{" "}
+                     {item?.fullName}
+                    </TableCell>
+                    <TableCell>{item?.email}</TableCell>
+                    <TableCell className="py-3">{item?.phone}</TableCell>
+                    <TableCell className="py-3">{item?.country}</TableCell>
+                    <TableCell className="py-3">{item?.address}</TableCell>
+                    <TableCell className="py-3">{item?.city}</TableCell>
+                    <TableCell className="py-3">{item?.state} </TableCell>
+                    <TableCell className="py-3">
+                      <Badge
+                        variant="secondary"
+                        className="bg-[#FFF7E8] text-[#FAAD14] px-5 py-1 text-base"
+                      >
+                        {item?.status}
+                      </Badge>
+                    </TableCell>
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
           </div>

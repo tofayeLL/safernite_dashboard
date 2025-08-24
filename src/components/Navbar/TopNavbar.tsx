@@ -14,10 +14,12 @@ import {
 import { formatChatDate } from "@/lib/formateTimeStamp";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import userImage from "@/assets/images/userImage.jpg";
-import { useSelector } from "react-redux";
-import { useAuth } from "@/redux/features/authSlice";
+/* import { useSelector } from "react-redux";
+import { useAuth } from "@/redux/features/authSlice"; */
 import { Badge } from "antd";
 import Link from "next/link";
+import { useGetMyProfileQuery } from "@/redux/api/settingsApi";
+
 // import Link from "next/link";
 
 
@@ -37,14 +39,23 @@ type UpdateNotificationPayload = {
 };
 
 const TopNavbar = () => {
+  // get my profile
+
+  const {data:myProfile} = useGetMyProfileQuery({})
+  console.log("myprofile", myProfile);
+  console.log("myprofile", myProfile?.result?.profileImage);
+
+
+
   const { data: notificationsData, refetch } = useGetMyNotificationsQuery({});
   const [updateNotification] = useUpdateNotificationMutation();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const notifications: NotificationType[] = notificationsData?.result || [];
-  const authState = useSelector(useAuth)
-  console.log("to navbar",authState);
-  console.log("to navbar",authState?.adminInfo?.profileImage);
+
+/*   const authState = useSelector(useAuth)
+  console.log("to navbar auth",authState);
+  console.log("to navbar",authState); */
 
   const unreadCount = notifications.filter((n) => !n.isRead).length;
 
@@ -94,7 +105,7 @@ const TopNavbar = () => {
           {/* Profile */}
           <div >
             <Image
-              src={authState?.adminInfo?.profileImage || userImage}
+              src={myProfile?.result?.profileImage || userImage}
               height={50}
               width={50}
               alt="avatar"
