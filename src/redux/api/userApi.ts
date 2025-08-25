@@ -22,13 +22,13 @@ export const userApi = baseApi.injectEndpoints({
       providesTags: ["users"],
     }),
    
-    /* getSingleUser: builder.query({
+    getSingleUser: builder.query({
       query: () => ({      
         url: "/auth/profile",
         method: "GET",
       }),
       providesTags: ["profile"],
-    }), */
+    }),
    
    
   }),
@@ -36,6 +36,6 @@ export const userApi = baseApi.injectEndpoints({
 
 export const {
   useGetAllUsersQuery,
-//   useGetSingleUserQuery,
+  useGetSingleUserQuery,
   
 } = userApi;

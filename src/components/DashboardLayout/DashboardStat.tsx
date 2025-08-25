@@ -1,8 +1,10 @@
 "use client";
 
 import React from "react";
-import { Loading } from "../ui/loading";
+
 import { useGetAllStatsQuery } from "@/redux/api/adminApi";
+import { Loading } from "../ui/loading";
+
 
 
 
@@ -15,7 +17,7 @@ console.log("admin stats",allStatsData);
      return (
        <div className="flex items-center justify-center min-h-[70vh] bg-white">
          <div className="flex items-center justify-center space-x-2">
-           <Loading></Loading>
+           <Loading ></Loading>
          </div>
        </div>
      );

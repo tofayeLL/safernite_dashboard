@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React, { useState } from "react";
 
@@ -22,6 +23,8 @@ import {
   SelectTrigger,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import { useGetAllLeaderBoardOverviewQuery } from "@/redux/api/leaderboardApi";
+import { Loading } from "@/components/ui/loading";
 
 /* interface ActivityData {
   id: string;
@@ -36,6 +39,12 @@ import { Button } from "@/components/ui/button";
 } */
 
 const LeaderboardOverview = () => {
+  // all leaderboard data
+  const { data: LeaderBoardOverviewData, isLoading } = useGetAllLeaderBoardOverviewQuery(
+    {}
+  );
+  console.log("allLeaderBoardOverviewData", LeaderBoardOverviewData);
+
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   const handleCategoryChange = (value: string) => {
@@ -43,6 +52,15 @@ const LeaderboardOverview = () => {
     // Add filtering logic here based on your needs
   };
 
+    if (isLoading) {
+      return (
+        <div className="flex items-center justify-center min-h-[70vh] bg-white">
+          <div className="flex items-center justify-center space-x-2">
+            <Loading ></Loading>
+          </div>
+        </div>
+      );
+    }
   return (
     <section>
       <div className="bg-white p-6 rounded-2xl shadow">
@@ -50,7 +68,7 @@ const LeaderboardOverview = () => {
           {/* Header with filters */}
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold text-gray-900">
-             Leaderboard Overview
+              Leaderboard Overview
             </h2>
             <div className="flex items-center gap-4">
               <div className="relative">
@@ -67,7 +85,7 @@ const LeaderboardOverview = () => {
                 onValueChange={handleCategoryChange}
               >
                 <SelectTrigger className="">
-                  <Filter className="h-4 w-4"/>
+                  <Filter className="h-4 w-4" />
                   Filter
                 </SelectTrigger>
                 <SelectContent>
@@ -112,31 +130,38 @@ const LeaderboardOverview = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                <TableRow className="border-b last:border-b-0">
-                  <TableCell className="font-medium text-gray-900 py-3">
-                    01
-                  </TableCell>
-                  <TableCell className="font-medium text-gray-700 py-3 flex justify-start items-center gap-2">
-                    <span>
-                      <Image
-                        src={userImage}
-                        alt="image"
-                        width={40}
-                        height={40}
-                        className="rounded-sm object-cover w-10 h-10"
-                      />
-                    </span>{" "}
-                    Mia Johnson
-                  </TableCell>
-                  <TableCell className="text-gray-700 py-3">Laptop</TableCell>
-                  <TableCell className="py-3">2025-09-28</TableCell>
-                  <TableCell className="py-3">€2,499</TableCell>
-                  <TableCell className="py-3">€2,499</TableCell>
+                {LeaderBoardOverviewData?.result?.map(
+                  (item: any, index: any) => (
+                    <TableRow
+                      key={item.id}
+                      className="border-b last:border-b-0"
+                    >
+                      <TableCell className="font-medium text-gray-900 py-3">
+                        0{index+1}
+                      </TableCell>
+                      <TableCell className="font-medium text-gray-700 py-3 flex justify-start items-center gap-2">
+                        <span>
+                          <Image
+                            src={item?.user?.profileImage || userImage}
+                            alt="image"
+                            width={40}
+                            height={40}
+                            className="rounded-sm object-cover w-10 h-10"
+                          />
+                        </span>{" "}
+                       {item?.user?.userName || "not found"}
+                      </TableCell>
+                      <TableCell className="text-gray-700 py-3">
+                        {item?.productName}
+                      </TableCell>
+                      <TableCell className="py-3">{item?.createdAt}</TableCell>
+                      <TableCell className="py-3">€{item?.price}</TableCell>
+                      <TableCell className="py-3">€{item?.raised}</TableCell>
 
-                  <TableCell className="text-gray-700 py-3">
-                    <span className="text-[#52C41A]">100%</span>
-                  </TableCell>
-                  {/*  <Badge
+                      <TableCell className="text-gray-700 py-3">
+                        <span className="text-[#52C41A]">100%</span>
+                      </TableCell>
+                      {/*  <Badge
                         variant="secondary"
                         className={`px-5 py-1 text-base ${
                           status === "Active"
@@ -146,15 +171,17 @@ const LeaderboardOverview = () => {
                       >
                         {status}
                       </Badge> */}
-                  <TableCell className="text-gray-700 py-3">
-                    <Button
-                      variant="secondary"
-                      className="bg-[#E353141A] text-[#E35314] hover:text-[#f75510] hover:bg-[#c03e061a] px-5 py-2 text-sm cursor-pointer"
-                    >
-                      Delete
-                    </Button>
-                  </TableCell>
-                </TableRow>
+                      <TableCell className="text-gray-700 py-3">
+                        <Button
+                          variant="secondary"
+                          className="bg-[#E353141A] text-[#E35314] hover:text-[#f75510] hover:bg-[#c03e061a] px-5 py-2 text-sm cursor-pointer"
+                        >
+                          Delete
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  )
+                )}
               </TableBody>
             </Table>
           </div>

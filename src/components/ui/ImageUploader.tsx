@@ -97,7 +97,7 @@ export function ImageUploader() {
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-4">
-              <Upload className="h-10 w-10 text-gray-400 mb-2" />
+              <Upload className="h-10 w-10 text-gray-400  mb-2" />
               <p className="text-sm text-gray-600">
                 {isDragActive ? "Drop the images here" : "Drag & drop images here, or click to select"}
               </p>
@@ -157,7 +157,7 @@ export function ImageUploader() {
 
             <div className="flex gap-2">
               {!!files.length && !uploadedUrls.length && (
-                <Button onClick={handleUpload} disabled={isLoading} className="flex-1 text-white">
+                <Button onClick={handleUpload} disabled={isLoading} className="flex-1 text-black bg-[#2cece0] hover:bg-[#10c4b8] cursor-pointer">
                   {isLoading ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -177,7 +177,7 @@ export function ImageUploader() {
         )} */}
 
               {(files.length > 0 || error) && (
-                <Button variant="outline" onClick={handleReset} disabled={isLoading}>
+                <Button variant="outline" className="cursor-pointer" onClick={handleReset} disabled={isLoading}>
                   Reset
                 </Button>
               )}

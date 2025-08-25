@@ -14,7 +14,7 @@ import {
 import {
   Card,
   CardContent,
-  CardHeader /* , CardTitle */,
+  CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 
@@ -27,12 +27,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-/* import { Button } from "@/components/ui/button";
-import { ChevronDown } from "lucide-react";
-import { useState } from "react"; */
+import { useGetEarningChartDataQuery } from "@/redux/api/adminApi";
+import { Loading } from "../ui/loading";
 
-// Sample data for the chart
-const chartData = [
+// Sample data for the chart (fallback data)
+const dummyData = [
   { month: "Feb", activity: 110, displayActivity: 110, fullMonth: "February" },
   { month: "Mar", activity: 78, displayActivity: 78, fullMonth: "March" },
   { month: "Apr", activity: 72, displayActivity: 72, fullMonth: "April" },
@@ -73,6 +72,10 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 export default function CasesReportChart() {
+  // all earning chart data
+  const { data: AllChartData, isLoading } = useGetEarningChartDataQuery({});
+  console.log("allChartData", AllChartData);
+
   const [selectedCategory, setSelectedCategory] = useState("Monthly");
 
   const handleCategoryChange = (value: string) => {
@@ -80,11 +83,37 @@ export default function CasesReportChart() {
     // Add filtering logic here based on your needs
   };
 
+  // Transform backend data to match the expected format
+  const backendData = AllChartData?.result?.map((item: any) => ({
+    month: item.month,
+    activity: item.donation,
+    displayActivity: item.displayDonation,
+    fullMonth: item.fullMonth,
+    isHighlighted: item.isHighlighted || false,
+  })) || [];
+
+  // Use backend data if available, otherwise use dummy data
+  const chartData = dummyData.map(dummyItem => {
+  const backendItem = backendData.find((item: { month: string; }) => item.month === dummyItem.month);
+  return backendItem ? backendItem : dummyItem;
+});
+
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px] bg-white rounded-2xl shadow-xs">
+        <div className="flex items-center justify-center space-x-2">
+          <Loading></Loading>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <Card className="w-full bg-[#FFF] flex flex-col justify-end item-end rounded-2xl  shadow-xs">
       <CardHeader className="flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-xl md:text-2xl font-semibold">
-          Activity Team
+          Earning Report
         </CardTitle>
         <div className="hidden md:flex items-center gap-6">
           <div className="flex justify-center items-center gap-2">
@@ -143,7 +172,7 @@ export default function CasesReportChart() {
                 radius={[8, 8, 8, 8]}
                 maxBarSize={60}
               >
-                {chartData.map((entry, index) => (
+                {chartData.map((entry: any, index: number) => (
                   <Cell
                     key={`cell-${index}`}
                     fill={entry.isHighlighted ? "#08E9DB" : "#9af5f0"}

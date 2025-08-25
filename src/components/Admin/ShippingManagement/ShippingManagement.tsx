@@ -16,6 +16,8 @@ import { Badge } from "@/components/ui/badge";
 import { useGetAllShipmentsQuery } from "@/redux/api/shipmentApi";
 import { Loading } from "@/components/ui/loading";
 
+
+
 /* interface ActivityData {
   id: string;
   date: string;
@@ -37,7 +39,7 @@ const ShippingManagement = () => {
     return (
       <div className="flex items-center justify-center min-h-[70vh] bg-white">
         <div className="flex items-center justify-center space-x-2">
-          <Loading></Loading>
+          <Loading ></Loading>
         </div>
       </div>
     );
@@ -98,7 +100,7 @@ const ShippingManagement = () => {
                           className="rounded-sm object-cover w-10 h-10"
                         />
                       </span>{" "}
-                     {item?.fullName}
+                      {item?.fullName}
                     </TableCell>
                     <TableCell>{item?.email}</TableCell>
                     <TableCell className="py-3">{item?.phone}</TableCell>
@@ -109,7 +111,15 @@ const ShippingManagement = () => {
                     <TableCell className="py-3">
                       <Badge
                         variant="secondary"
-                        className="bg-[#FFF7E8] text-[#FAAD14] px-5 py-1 text-base"
+                        className={`px-5 py-1 text-base ${
+                          item?.status === "Pending"
+                            ? "bg-[#FFF7E8] text-[#FAAD14]"
+                            : item?.status === "Completed"
+                            ? "bg-green-100 text-green-700"
+                            : item?.status === "Cancelled"
+                            ? "bg-red-100 text-red-700"
+                            : "bg-gray-100 text-gray-700" // fallback
+                        }`}
                       >
                         {item?.status}
                       </Badge>

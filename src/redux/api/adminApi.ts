@@ -12,6 +12,21 @@ export const adminApi = baseApi.injectEndpoints({
       providesTags: ["admins"],
     }),
 
+     getNewUser: builder.query({
+      query: ({ type }) => ({
+        url: `/admin/users/time?type=${type}`,
+        method: "GET",
+      }),
+      providesTags: ["admins"],
+    }),
+     getEarningChartData: builder.query({
+      query: () => ({
+        url: `/admin/donation-monthly`,
+        method: "GET",
+      }),
+      providesTags: ["admins"],
+    }),
+
       /* getMyProfile: builder.query({
       query: () => ({
         url: `/user/profile`,
@@ -71,6 +86,9 @@ export const adminApi = baseApi.injectEndpoints({
 
 export const {
   useGetAllStatsQuery,
+  useGetNewUserQuery ,
+  useGetEarningChartDataQuery,
+
 
 
 

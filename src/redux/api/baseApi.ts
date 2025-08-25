@@ -24,6 +24,8 @@ export const baseApi = createApi({
     "users",
     "posts",
     "shipments",
+    "donation",
+    "leaderboard",
 
 
 

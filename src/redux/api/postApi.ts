@@ -8,17 +8,17 @@ export const postApi = baseApi.injectEndpoints({
         const params = new URLSearchParams();
         params.append('page', page.toString());
         params.append('limit', limit.toString());
-        
-        // Add search parameter if provided
+       
+        // Add search parameter if provided (searches by productName)
         if (search && search.trim() !== '') {
           params.append('search', search.trim());
         }
-        
-        // Add postType parameter if provided
-        if (postType && postType.trim() !== '') {
+       
+        // Add postType parameter if provided (filters by postType)
+        if (postType && postType.trim() !== '' && postType !== 'all') {
           params.append('postType', postType.trim());
         }
-        
+       
         return {
           url: `/admin/all-posts?${params.toString()}`,
           method: "GET",
@@ -26,7 +26,7 @@ export const postApi = baseApi.injectEndpoints({
       },
       providesTags: ["posts"],
     }),
-    
+   
     // getSinglePost: builder.query({
     //   query: (id) => ({
     //     url: `/admin/post/${id}`,
@@ -34,7 +34,7 @@ export const postApi = baseApi.injectEndpoints({
     //   }),
     //   providesTags: ["posts"],
     // }),
-    
+   
     // deletePost: builder.mutation({
     //   query: (id) => ({
     //     url: `/admin/post/${id}`,

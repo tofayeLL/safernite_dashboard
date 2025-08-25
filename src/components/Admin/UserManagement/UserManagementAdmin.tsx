@@ -19,8 +19,10 @@ import { Input } from "@/components/ui/input";
 
 import { Badge } from "@/components/ui/badge";
 import { useGetAllUsersQuery } from "@/redux/api/userApi";
-import { Loading } from "@/components/ui/loading";
+
 import Pagination from "@/components/ui/pagination";
+import { Loading } from "@/components/ui/loading";
+
 
 const UserManagementAdmin = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -63,7 +65,7 @@ const UserManagementAdmin = () => {
     return (
       <div className="flex items-center justify-center min-h-[70vh] bg-white">
         <div className="flex items-center justify-center space-x-2">
-          <Loading></Loading>
+          <Loading ></Loading>
         </div>
       </div>
     );
@@ -82,7 +84,7 @@ const UserManagementAdmin = () => {
               <div className="relative">
                 <Input
                   type="text"
-                  placeholder="Search by name or email..."
+                  placeholder="Search by name "
                   value={searchTerm}
                   onChange={handleSearchChange}
                   className="pr-10 py-2 lg:w-64 bg-white border-gray-200 focus:bg-white focus:border-gray-300 focus:ring-1 focus:ring-gray-300"
