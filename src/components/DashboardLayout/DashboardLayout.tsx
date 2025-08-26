@@ -15,7 +15,7 @@ const DashboardLayout = () => {
       <DashboardStat />
       
       <div>
-        <div className="  grid grid-cols-3 gap-6">
+        <div className="  grid lg:grid-cols-3 grid-cols-1 gap-6">
           <div className="col-span-2">
             <EarningReportChart />
           </div>
@@ -28,7 +28,7 @@ const DashboardLayout = () => {
 
 
       <div>
-        <div className="  grid grid-cols-3 gap-6">
+        <div className="  grid lg:grid-cols-3 grid-cols-1 gap-6">
           <div className="col-span-2">
               <UserManagement></UserManagement>
           </div>

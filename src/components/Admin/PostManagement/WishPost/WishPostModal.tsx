@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { useGetSinglePostQuery } from "@/redux/api/postApi";
 import { Loading } from "@/components/ui/loading";
 import { useUpdateStatusMutation } from "@/redux/api/donationApi";
+import { toast } from "sonner";
 
 interface WishPostModalProps {
   isOpen: boolean;
@@ -32,6 +33,7 @@ export const WishPostModal: React.FC<WishPostModalProps> = ({
   console.log("from wish list id", itemId);
   const { data: getSingleWishPost, isLoading } = useGetSinglePostQuery(itemId);
   console.log("getSingleWishPost", getSingleWishPost);
+  console.log("isApproved status", getSingleWishPost?.result?.isApproved);
 
   const [statusUpdate, { isLoading: isUpdating }] = useUpdateStatusMutation();
 
@@ -87,8 +89,6 @@ export const WishPostModal: React.FC<WishPostModalProps> = ({
     return `${diffDays} days ago`;
   };
 
-
-
   const handleApprove = async () => {
     try {
       const response = await statusUpdate({
@@ -97,15 +97,15 @@ export const WishPostModal: React.FC<WishPostModalProps> = ({
       }).unwrap();
 
       console.log("Post approved:", response);
-      // Optionally close the modal or show a success message
+      // Update toast to success
+      toast.success("Post approved successfully!");
       onClose(false);
     } catch (error) {
       console.error("Failed to approve post:", error);
-      // Handle error (show error message to user)
+      toast.error("Failed to approve post. Please try again.");
     }
   };
 
-  
   const handleReject = async () => {
     try {
       const response = await statusUpdate({
@@ -114,14 +114,15 @@ export const WishPostModal: React.FC<WishPostModalProps> = ({
       }).unwrap();
 
       console.log("Post rejected:", response);
-      // Optionally close the modal or show a success message
+      // Update toast to success
+      toast.success("Post rejected successfully!");
       onClose(false);
     } catch (error) {
       console.error("Failed to reject post:", error);
-      // Handle error (show error message to user)
+      // Show error toast
+      toast.error("Failed to reject post. Please try again.");
     }
   };
-
 
   if (isLoading) {
     return (
@@ -138,7 +139,7 @@ export const WishPostModal: React.FC<WishPostModalProps> = ({
       <DialogContent className="sm:max-w-[95%] md:max-w-[80%] lg:max-w-[60%] xl:max-w-[50%] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-lg md:text-xl">
-            Wish Post Details
+            Wish Post Details 
           </DialogTitle>
         </DialogHeader>
         <div className="pt-2 md:pt-4">
@@ -405,27 +406,38 @@ export const WishPostModal: React.FC<WishPostModalProps> = ({
                 </div>
               )}
 
-           
               {/* Approve and reject buttons */}
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-3 md:gap-4 mt-6 md:mt-10">
-                <Button
-                  onClick={handleApprove}
-                  disabled={isUpdating}
-                  className="w-full sm:w-auto bg-[#52C41A] hover:bg-green-600 disabled:bg-green-300 text-white px-6 md:px-7 py-2 md:py-3 rounded-md font-medium transition-colors cursor-pointer text-sm md:text-base"
-                >
-                  {isUpdating ? "Processing..." : "Approved"}
-                </Button>
+              {getSingleWishPost?.result?.isApproved === "Pending" && (
+                <div className="flex flex-col sm:flex-row justify-center items-center gap-3 md:gap-4 mt-6 md:mt-10">
+                  <Button
+                    onClick={handleApprove}
+                    disabled={isUpdating}
+                    className="w-full sm:w-auto bg-[#52C41A] hover:bg-green-600 disabled:bg-green-300 text-white px-6 md:px-7 py-2 md:py-3 rounded-md font-medium transition-colors cursor-pointer text-sm md:text-base"
+                  >
+                    {isUpdating ? "Processing..." : "Approved"}
+                  </Button>
 
-                <Button
-                  onClick={handleReject}
-                  disabled={isUpdating}
-                  className="w-full sm:w-auto bg-[#FF4D4F] hover:bg-red-600 disabled:bg-red-300 text-white px-6 md:px-7 py-2 md:py-3 rounded-md font-medium transition-colors cursor-pointer text-sm md:text-base"
-                >
-                  {isUpdating ? "Processing..." : "Rejected"}
-                </Button>
-              </div>
-
-
+                  <Button
+                    onClick={handleReject}
+                    disabled={isUpdating}
+                    className="w-full sm:w-auto bg-[#FF4D4F] hover:bg-red-600 disabled:bg-red-300 text-white px-6 md:px-7 py-2 md:py-3 rounded-md font-medium transition-colors cursor-pointer text-sm md:text-base"
+                  >
+                    {isUpdating ? "Processing..." : "Rejected"}
+                  </Button>
+                </div>
+              )}
+              {getSingleWishPost?.result?.isApproved !== "Pending" && (
+                <div className="flex justify-center items-center mt-6 md:mt-10">
+                  <div className="px-4 py-2 bg-gray-100 rounded-md">
+                    <p className="text-gray-700 font-medium">
+                      Status:{" "}
+                      <span className="capitalize">
+                        {getSingleWishPost?.result?.isApproved?.toLowerCase()}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

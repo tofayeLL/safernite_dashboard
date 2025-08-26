@@ -66,11 +66,11 @@ const LeaderboardOverview = () => {
       <div className="bg-white p-6 rounded-2xl shadow">
         <div className="w-full space-y-4">
           {/* Header with filters */}
-          <div className="flex items-center justify-between">
+          <div className="flex lg:flex-row flex-col items-center justify-between">
             <h2 className="text-xl font-semibold text-gray-900">
               Leaderboard Overview
             </h2>
-            <div className="flex items-center gap-4">
+            <div className="flex lg:flex-row flex-col items-center gap-4">
               <div className="relative">
                 <Input
                   type="text"

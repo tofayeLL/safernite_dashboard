@@ -1,14 +1,11 @@
-"use client";
-import WishPost from "@/components/Admin/PostManagement/WishPost/WishPost";
-import { useParams } from "next/navigation";
+import PostManagement from "@/components/Admin/PostManagement/PostManagement";
+
 import React from "react";
 
 const Page = () => {
-  const { id } = useParams();
-  console.log("params id from wishList post",id);
   return (
     <div>
-      <WishPost />
+      <PostManagement></PostManagement>
     </div>
   );
 };
