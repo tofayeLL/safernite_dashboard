@@ -25,6 +25,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { useGetAllLeaderBoardOverviewQuery } from "@/redux/api/leaderboardApi";
 import { Loading } from "@/components/ui/loading";
+import { useDeletePostMutation } from "@/redux/api/postApi";
+import Swal from "sweetalert2";
+import { toast } from "sonner";
 
 /* interface ActivityData {
   id: string;
@@ -45,7 +48,60 @@ const LeaderboardOverview = () => {
   );
   console.log("allLeaderBoardOverviewData", LeaderBoardOverviewData);
 
+
+   const [deletePost, { isLoading: isDeleting }] = useDeletePostMutation();
+
+
+
+
   const [selectedCategory, setSelectedCategory] = useState("all");
+
+   //   handle delete
+  const handleDelete = async (id: string) => {
+
+
+    console.log("delete item id", id);
+
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#00A8CC",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        // const loadingToast = toast.loading("Deleting post...");
+
+        const res = await deletePost(id).unwrap();
+        console.log("deletePost", res);
+
+        toast.success("Post deleted successfully!");
+
+        Swal.fire("Deleted!", "Your post has been deleted.", "success");
+
+        // Optionally trigger a refetch or update local state
+        // refetch();
+      } catch (error) {
+        console.error("Failed to delete post:", error);
+        toast.error("Failed to delete post. Please try again.");
+
+        Swal.fire(
+          "Error!",
+          "Failed to delete post. Please try again.",
+          "error"
+        );
+      }
+    }
+  };
+
+
+
+
 
   const handleCategoryChange = (value: string) => {
     setSelectedCategory(value);
@@ -172,12 +228,15 @@ const LeaderboardOverview = () => {
                         {status}
                       </Badge> */}
                       <TableCell className="text-gray-700 py-3">
-                        <Button
-                          variant="secondary"
-                          className="bg-[#E353141A] text-[#E35314] hover:text-[#f75510] hover:bg-[#c03e061a] px-5 py-2 text-sm cursor-pointer"
-                        >
-                          Delete
-                        </Button>
+                         {/* delete button */}
+                          <Button
+                            onClick={() => handleDelete(item?.id)}
+                            disabled={isDeleting}
+                            variant="outline"
+                             className="bg-[#E353141A] text-[#E35314] hover:text-[#f75510] hover:bg-[#c03e061a] px-5 py-2 text-sm cursor-pointer"
+                          >
+                            {isDeleting ? "Deleting..." : "Delete"}
+                          </Button>
                       </TableCell>
                     </TableRow>
                   )

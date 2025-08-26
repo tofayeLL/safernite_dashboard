@@ -7,7 +7,7 @@ import { IoClose /* IoLocationSharp */ } from "react-icons/io5";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { FiMenu } from "react-icons/fi";
 import Cookies from "js-cookie";
-import logo from "@/assets/saferniteLogo (2).png";
+import logo from "@/assets/logo.png";
 import { RxDashboard } from "react-icons/rx";
 import { useDispatch } from "react-redux";
 import { logout } from "@/redux/features/authSlice";
@@ -107,7 +107,7 @@ const NavbarSlider = ({ isOpen, toggleSidebar }: SidebarProps) => {
                 <Image
                   width={250}
                   height={250}
-                  className="w-14 h-14 object-cover object-center"
+                  className="w-10 h-10 object-cover object-center"
                   src={logo}
                   alt="logo_image"
                   priority

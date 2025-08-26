@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import preview from "@/assets/loginPageImage.png";
-import logo from "@/assets/saferniteLogo (2).png";
+import logo from "@/assets/logo.png";
 import { useLoginMutation } from "@/redux/api/authApi";
 import { Alert, Spin } from "antd";
 import { toast } from "sonner";

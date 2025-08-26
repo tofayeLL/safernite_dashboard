@@ -29,14 +29,17 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 import { usePathname, useRouter } from "next/navigation";
-
-import { useGetAllPostsQuery } from "@/redux/api/postApi";
+import Swal from "sweetalert2";
+import {
+  useDeletePostMutation,
+  useGetAllPostsQuery,
+} from "@/redux/api/postApi";
 
 import { Loading } from "@/components/ui/loading";
 import Pagination from "@/components/ui/pagination";
 import { WishPostModal } from "./WishPost/WishPostModal";
 import { BlogPostModal } from "./BlogPost/BlogPostModal";
-
+import { toast } from "sonner";
 
 const PostManagement = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -56,17 +59,13 @@ const PostManagement = () => {
   console.log("allposts", allPostsData);
   console.log("pagination", allPostsData?.result?.meta?.totalPages);
 
+  const [deletePost, { isLoading: isDeleting }] = useDeletePostMutation();
+
   const [isOpen, setIsOpen] = useState(false);
   const [selectedPost, setSelectedPost] = useState<{
     id: string;
     type: string;
   } | null>(null);
-
-  const handleViewClick = (id: string, type: string) => {
-    console.log("post id",id);
-    setSelectedPost({ id, type });
-    setIsOpen(true);
-  };
 
   const router = useRouter();
   const pathname = usePathname();
@@ -83,13 +82,6 @@ const PostManagement = () => {
   const handlePostTypeChange = (value: string) => {
     setSelectedPostType(value);
     setCurrentPage(1); // Reset to first page when changing filter
-
-    // Optional: Navigate to different routes based on filter
-    // if (value === "Wish") {
-    //   router.push("/admin/post-Management");
-    // } else if (value === "Blog") {
-    //   router.push("/admin/blogPost-Management");
-    // }
   };
 
   // Handle search change
@@ -158,6 +150,56 @@ const PostManagement = () => {
     }
   };
 
+  // handle view details
+  const handleViewDetails = (id: string, type: string) => {
+    console.log("post id", id);
+    setSelectedPost({ id, type });
+    setIsOpen(true);
+  };
+
+  //   handle delete
+  const handleDelete = async (postId: string) => {
+
+
+    console.log("delete post id", postId);
+
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#00A8CC",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        // const loadingToast = toast.loading("Deleting post...");
+
+        const res = await deletePost(postId).unwrap();
+        console.log("deletePost", res);
+
+        toast.success("Post deleted successfully!");
+
+        Swal.fire("Deleted!", "Your post has been deleted.", "success");
+
+        // Optionally trigger a refetch or update local state
+        // refetch();
+      } catch (error) {
+        console.error("Failed to delete post:", error);
+        toast.error("Failed to delete post. Please try again.");
+
+        Swal.fire(
+          "Error!",
+          "Failed to delete post. Please try again.",
+          "error"
+        );
+      }
+    }
+  };
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[70vh] bg-white">
@@ -169,7 +211,6 @@ const PostManagement = () => {
   }
 
   return (
-
     <section>
       <div className="bg-white p-6 rounded-2xl shadow">
         <div className="w-full space-y-4">
@@ -326,20 +367,25 @@ const PostManagement = () => {
                           </Badge>
                         </TableCell>
                         <TableCell className="text-gray-700 space-x-3">
+                          {/* view button */}
                           <Button
                             onClick={() =>
-                              handleViewClick(post?.id, post.postType)
+                              handleViewDetails(post?.id, post.postType)
                             }
                             variant="outline"
                             className="bg-blue-50 w-[40%] cursor-pointer text-blue-600 border-blue-200 hover:bg-blue-100 hover:text-blue-700 hover:border-blue-300 px-4 py-2 rounded-sm font-medium transition-colors"
                           >
                             View
                           </Button>
+
+                          {/* delete button */}
                           <Button
+                            onClick={() => handleDelete(post?.id)}
+                            disabled={isDeleting}
                             variant="outline"
                             className="bg-red-50 w-[40%] cursor-pointer text-red-600 border-red-200 hover:bg-red-100 hover:text-red-700 hover:border-red-300 px-4 py-2 rounded-sm font-medium transition-colors"
                           >
-                            Delete
+                            {isDeleting ? "Deleting..." : "Delete"}
                           </Button>
                         </TableCell>
                       </TableRow>
@@ -394,7 +440,6 @@ const PostManagement = () => {
         </div>
       )}
     </section>
-
   );
 };
 
