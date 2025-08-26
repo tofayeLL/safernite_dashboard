@@ -17,7 +17,7 @@ export const groupApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ["report", "users", "wardens", "leaders"],
+      invalidatesTags: ["report", "users",  "leaders"],
     }),
   }),
 });

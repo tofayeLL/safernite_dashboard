@@ -18,15 +18,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { useState } from "react";
-
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../ui/select";
 import { useGetEarningChartDataQuery } from "@/redux/api/adminApi";
 import { Loading } from "../ui/loading";
 
@@ -75,13 +66,13 @@ export default function CasesReportChart() {
   // all earning chart data
   const { data: AllChartData, isLoading } = useGetEarningChartDataQuery({});
   console.log("allChartData", AllChartData);
-
+/* 
   const [selectedCategory, setSelectedCategory] = useState("Monthly");
 
   const handleCategoryChange = (value: string) => {
     setSelectedCategory(value);
     // Add filtering logic here based on your needs
-  };
+  }; */
 
   // Transform backend data to match the expected format
   const backendData = AllChartData?.result?.map((item: any) => ({
@@ -120,7 +111,7 @@ export default function CasesReportChart() {
             <p className="bg-[#08E9DB] h-4 w-4 rounded"></p>
             <h1>Earning</h1>
           </div>
-          <Select value={selectedCategory} onValueChange={handleCategoryChange}>
+         {/*  <Select value={selectedCategory} onValueChange={handleCategoryChange}>
             <SelectTrigger className="">
               <SelectValue placeholder="Monthly" />
             </SelectTrigger>
@@ -130,7 +121,7 @@ export default function CasesReportChart() {
               <SelectItem value="Weekly">Weekly</SelectItem>
               <SelectItem value="Yearly">Yearly</SelectItem>
             </SelectContent>
-          </Select>
+          </Select> */}
         </div>
       </CardHeader>
 

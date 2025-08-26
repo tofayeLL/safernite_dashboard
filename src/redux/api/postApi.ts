@@ -27,13 +27,13 @@ export const postApi = baseApi.injectEndpoints({
       providesTags: ["posts"],
     }),
    
-    // getSinglePost: builder.query({
-    //   query: (id) => ({
-    //     url: `/admin/post/${id}`,
-    //     method: "GET",
-    //   }),
-    //   providesTags: ["posts"],
-    // }),
+    getSinglePost: builder.query({
+      query: (id) => ({
+        url: `/admin/donation/details/${id}`,
+        method: "GET",
+      }),
+      providesTags: ["posts"],
+    }),
    
     // deletePost: builder.mutation({
     //   query: (id) => ({
@@ -47,6 +47,6 @@ export const postApi = baseApi.injectEndpoints({
 
 export const {
   useGetAllPostsQuery,
-  // useGetSinglePostQuery,
+  useGetSinglePostQuery,
   // useDeletePostMutation,
 } = postApi;

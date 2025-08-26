@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import {  Modal, message as AntMessage } from "antd";
+import { Modal, message as AntMessage } from "antd";
 // import { IoMdNotificationsOutline } from "react-icons/io";
 
 // import { LuMessageCircleMore } from "react-icons/lu";
@@ -17,11 +17,10 @@ import userImage from "@/assets/images/userImage.jpg";
 /* import { useSelector } from "react-redux";
 import { useAuth } from "@/redux/features/authSlice"; */
 import { Badge } from "antd";
-import Link from "next/link";
+// import Link from "next/link";
 import { useGetMyProfileQuery } from "@/redux/api/settingsApi";
 
 // import Link from "next/link";
-
 
 type NotificationType = {
   id: string;
@@ -41,11 +40,9 @@ type UpdateNotificationPayload = {
 const TopNavbar = () => {
   // get my profile
 
-  const {data:myProfile} = useGetMyProfileQuery({})
+  const { data: myProfile } = useGetMyProfileQuery({});
   console.log("myprofile", myProfile);
   console.log("myprofile", myProfile?.result?.profileImage);
-
-
 
   const { data: notificationsData, refetch } = useGetMyNotificationsQuery({});
   const [updateNotification] = useUpdateNotificationMutation();
@@ -53,7 +50,7 @@ const TopNavbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const notifications: NotificationType[] = notificationsData?.result || [];
 
-/*   const authState = useSelector(useAuth)
+  /*   const authState = useSelector(useAuth)
   console.log("to navbar auth",authState);
   console.log("to navbar",authState); */
 
@@ -76,11 +73,13 @@ const TopNavbar = () => {
   return (
     <>
       <div className="bg-white flex justify-between items-center gap-2 font-bold w-full h-[81px] px-4 md:px-6 py-4 sticky top-0 z-40  ">
-        <h1 className="md:text-2xl flex justify-center items-center gap-5">Welcome to Admin Dashboard</h1>
+        <h1 className="md:text-2xl flex justify-center items-center gap-5">
+          Welcome to Admin Dashboard
+        </h1>
 
         <div className="flex justify-end items-center gap-6">
-            {/* message Icon */}
-       {/*   <Link href="/message">
+          {/* message Icon */}
+          {/*   <Link href="/message">
           <div
             className="bg-white shadow rounded-full px-2 py-1 h-full cursor-pointer"
            
@@ -91,19 +90,19 @@ const TopNavbar = () => {
           </div>
          </Link> */}
           {/* Notification Icon */}
-         <Link href={"/notification"}>
+          {/*  <Link href={"/notification"}> */}
           <div
             className="bg-white shadow rounded-full px-2 py-1 h-full cursor-pointer"
-           /*  onClick={() => setIsModalOpen(true)} */
+             onClick={() => setIsModalOpen(true)}
           >
             <Badge count={unreadCount} size="small">
               <IoMdNotificationsOutline className="w-6 h-6 text-gray-500" />
             </Badge>
           </div>
-         </Link>
+          {/*     </Link> */}
 
           {/* Profile */}
-          <div >
+          <div>
             <Image
               src={myProfile?.result?.profileImage || userImage}
               height={50}
@@ -112,8 +111,6 @@ const TopNavbar = () => {
               className="rounded-full w-10 h-10 object-cover"
               priority
             />
-        
-           
           </div>
         </div>
       </div>

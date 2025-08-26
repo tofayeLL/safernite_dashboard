@@ -42,7 +42,7 @@ import { BlogPostModal } from "./BlogPostModal";
 const BlogPost = () => {
   const [selectedCategory, setSelectedCategory] = useState("blog");
 
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [selectedId, setSelectedId] = useState("");
 
   const handleViewClick = (id: string) => {
@@ -52,9 +52,7 @@ const BlogPost = () => {
 
   const router = useRouter();
 
-   const pathname = usePathname();
-
-
+  const pathname = usePathname();
 
   // Set initial category based on route
   useEffect(() => {
@@ -92,18 +90,28 @@ const BlogPost = () => {
               </div>
 
               <Select
-                             value={selectedCategory}
-                             onValueChange={handleCategoryChange}
-                           >
-                             <SelectTrigger className="">
-                               <Filter className="h-4 w-4" />
-                               Filter
-                             </SelectTrigger>
-                             <SelectContent>
-                               <SelectItem   value="wish"    className="data-[state=checked]:bg-[#08E9DB] hover:bg-[#08E9DB]/20">Wish Post</SelectItem>
-                               <SelectItem value="blog" className="data-[state=checked]:bg-[#08E9DB] hover:bg-[#08E9DB]/20">Blog Post</SelectItem>
-                             </SelectContent>
-                           </Select>
+                value={selectedCategory}
+                onValueChange={handleCategoryChange}
+              >
+                <SelectTrigger className="">
+                  <Filter className="h-4 w-4" />
+                  Filter
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem
+                    value="wish"
+                    className="data-[state=checked]:bg-[#08E9DB] hover:bg-[#08E9DB]/20"
+                  >
+                    Wish Post
+                  </SelectItem>
+                  <SelectItem
+                    value="blog"
+                    className="data-[state=checked]:bg-[#08E9DB] hover:bg-[#08E9DB]/20"
+                  >
+                    Blog Post
+                  </SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
 
@@ -170,12 +178,11 @@ const BlogPost = () => {
                       View
                     </Button>
 
-                      <BlogPostModal
-                                          isOpen={isOpen}
-                                          onClose={() => setIsOpen(false)}
-                                          itemId={selectedId}
-                                        />
-                    
+                    <BlogPostModal
+                      isOpen={isOpen}
+                      onClose={() => setIsOpen(false)}
+                      itemId={selectedId}
+                    />
 
                     <Button
                       variant="outline"
