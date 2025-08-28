@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import React, { useState } from "react";
+// import React, { useState } from "react";
 
 import {
   Table,
@@ -11,23 +11,18 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { Filter, Search } from "lucide-react";
+// import { Filter, Search } from "lucide-react";
 
 import Image from "next/image";
 import userImage from "@/assets/User.png";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-} from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
+// import { Input } from "@/components/ui/input";
+
+// import { Button } from "@/components/ui/button";
 import { useGetAllLeaderBoardOverviewQuery } from "@/redux/api/leaderboardApi";
 import { Loading } from "@/components/ui/loading";
-import { useDeletePostMutation } from "@/redux/api/postApi";
+/* import { useDeletePostMutation } from "@/redux/api/postApi";
 import Swal from "sweetalert2";
-import { toast } from "sonner";
+import { toast } from "sonner"; */
 
 /* interface ActivityData {
   id: string;
@@ -43,23 +38,16 @@ import { toast } from "sonner";
 
 const LeaderboardOverview = () => {
   // all leaderboard data
-  const { data: LeaderBoardOverviewData, isLoading } = useGetAllLeaderBoardOverviewQuery(
-    {}
-  );
+  const { data: LeaderBoardOverviewData, isLoading } =
+    useGetAllLeaderBoardOverviewQuery({});
   console.log("allLeaderBoardOverviewData", LeaderBoardOverviewData);
 
+  // const [deletePost, { isLoading: isDeleting }] = useDeletePostMutation();
 
-   const [deletePost, { isLoading: isDeleting }] = useDeletePostMutation();
+  // const [selectedCategory, setSelectedCategory] = useState("all");
 
-
-
-
-  const [selectedCategory, setSelectedCategory] = useState("all");
-
-   //   handle delete
-  const handleDelete = async (id: string) => {
-
-
+  //   handle delete
+/*   const handleDelete = async (id: string) => {
     console.log("delete item id", id);
 
     const result = await Swal.fire({
@@ -97,26 +85,22 @@ const LeaderboardOverview = () => {
         );
       }
     }
-  };
+  }; */
 
-
-
-
-
-  const handleCategoryChange = (value: string) => {
+  /*  const handleCategoryChange = (value: string) => {
     setSelectedCategory(value);
     // Add filtering logic here based on your needs
-  };
+  }; */
 
-    if (isLoading) {
-      return (
-        <div className="flex items-center justify-center min-h-[70vh] bg-white">
-          <div className="flex items-center justify-center space-x-2">
-            <Loading ></Loading>
-          </div>
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[70vh] bg-white">
+        <div className="flex items-center justify-center space-x-2">
+          <Loading></Loading>
         </div>
-      );
-    }
+      </div>
+    );
+  }
   return (
     <section>
       <div className="bg-white p-6 rounded-2xl shadow">
@@ -126,7 +110,7 @@ const LeaderboardOverview = () => {
             <h2 className="text-xl font-semibold text-gray-900">
               Leaderboard Overview
             </h2>
-            <div className="flex lg:flex-row flex-col items-center gap-4">
+            {/* <div className="flex lg:flex-row flex-col items-center gap-4">
               <div className="relative">
                 <Input
                   type="text"
@@ -151,7 +135,7 @@ const LeaderboardOverview = () => {
                   <SelectItem value="reports">Reports</SelectItem>
                 </SelectContent>
               </Select>
-            </div>
+            </div> */}
           </div>
 
           {/* Table */}
@@ -180,9 +164,9 @@ const LeaderboardOverview = () => {
                   <TableHead className="text-base font-semibold">
                     Funding Percentage
                   </TableHead>
-                  <TableHead className="text-base font-semibold">
+                  {/* <TableHead className="text-base font-semibold">
                     Action
-                  </TableHead>
+                  </TableHead> */}
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -193,7 +177,7 @@ const LeaderboardOverview = () => {
                       className="border-b last:border-b-0"
                     >
                       <TableCell className="font-medium text-gray-900 py-3">
-                        0{index+1}
+                        0{index + 1}
                       </TableCell>
                       <TableCell className="font-medium text-gray-700 py-3 flex justify-start items-center gap-2">
                         <span>
@@ -205,7 +189,7 @@ const LeaderboardOverview = () => {
                             className="rounded-sm object-cover w-10 h-10"
                           />
                         </span>{" "}
-                       {item?.user?.userName || "not found"}
+                        {item?.user?.userName || "not found"}
                       </TableCell>
                       <TableCell className="text-gray-700 py-3">
                         {item?.productName}
@@ -228,15 +212,15 @@ const LeaderboardOverview = () => {
                         {status}
                       </Badge> */}
                       <TableCell className="text-gray-700 py-3">
-                         {/* delete button */}
-                          <Button
-                            onClick={() => handleDelete(item?.id)}
-                            disabled={isDeleting}
-                            variant="outline"
-                             className="bg-[#E353141A] text-[#E35314] hover:text-[#f75510] hover:bg-[#c03e061a] px-5 py-2 text-sm cursor-pointer"
-                          >
-                            {isDeleting ? "Deleting..." : "Delete"}
-                          </Button>
+                        {/* delete button */}
+                        {/* <Button
+                          onClick={() => handleDelete(item?.id)}
+                          disabled={isDeleting}
+                          variant="outline"
+                          className="bg-[#E353141A] text-[#E35314] hover:text-[#f75510] hover:bg-[#c03e061a] px-5 py-2 text-sm cursor-pointer"
+                        >
+                          {isDeleting ? "Deleting..." : "Delete"}
+                        </Button> */}
                       </TableCell>
                     </TableRow>
                   )

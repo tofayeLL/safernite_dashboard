@@ -69,7 +69,7 @@ export default function DonationOverview() {
   const total = data.reduce((sum, item) => sum + item.value, 0);
 
   return (
-    <Card className="w-full  bg-white shadow-xs">
+    <Card className="w-full h-full  bg-white shadow-xs">
       <CardHeader className="pb-0">
         <CardTitle className="text-2xl font-semibold text-gray-800">
           Donation Overview

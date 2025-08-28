@@ -158,7 +158,7 @@ const PostManagement = () => {
   };
 
   //   handle delete
-  const handleDelete = async (postId: string) => {
+ /*  const handleDelete = async (postId: string) => {
 
 
     console.log("delete post id", postId);
@@ -198,7 +198,7 @@ const PostManagement = () => {
         );
       }
     }
-  };
+  }; */
 
   if (isLoading) {
     return (
@@ -309,9 +309,9 @@ const PostManagement = () => {
                   <TableHead className="text-base font-semibold">
                     Post Type
                   </TableHead>
-                  <TableHead className="text-base font-semibold">
+                  {/* <TableHead className="text-base font-semibold">
                     Action
-                  </TableHead>
+                  </TableHead> */}
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -366,8 +366,10 @@ const PostManagement = () => {
                             {post.postType}
                           </Badge>
                         </TableCell>
-                        <TableCell className="text-gray-700 space-x-3">
-                          {/* view button */}
+
+
+                       {/*  <TableCell className="text-gray-700 space-x-3">
+                        
                           <Button
                             onClick={() =>
                               handleViewDetails(post?.id, post.postType)
@@ -378,7 +380,7 @@ const PostManagement = () => {
                             View
                           </Button>
 
-                          {/* delete button */}
+                        
                           <Button
                             onClick={() => handleDelete(post?.id)}
                             disabled={isDeleting}
@@ -387,7 +389,9 @@ const PostManagement = () => {
                           >
                             {isDeleting ? "Deleting..." : "Delete"}
                           </Button>
-                        </TableCell>
+                        </TableCell> */}
+
+
                       </TableRow>
                     );
                   })
