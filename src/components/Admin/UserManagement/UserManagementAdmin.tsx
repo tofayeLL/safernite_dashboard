@@ -135,7 +135,7 @@ const UserManagementAdmin = () => {
                 {getAllUser?.result?.users?.map((item: any, index: any) => (
                   <TableRow key={item?.id} className="border-b last:border-b-0">
                     <TableCell className="font-medium text-gray-900 py-3">
-                      0{index + 1}
+                      {index + 1}
                     </TableCell>
                     <TableCell className="font-medium text-gray-700 py-3 flex justify-start items-center gap-2">
                       <span>

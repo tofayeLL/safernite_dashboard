@@ -309,9 +309,9 @@ const PostManagement = () => {
                   <TableHead className="text-base font-semibold">
                     Post Type
                   </TableHead>
-                  {/* <TableHead className="text-base font-semibold">
+                  <TableHead className="text-base font-semibold">
                     Action
-                  </TableHead> */}
+                  </TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -368,7 +368,7 @@ const PostManagement = () => {
                         </TableCell>
 
 
-                       {/*  <TableCell className="text-gray-700 space-x-3">
+                        <TableCell className="text-gray-700 space-x-3">
                         
                           <Button
                             onClick={() =>
@@ -381,15 +381,15 @@ const PostManagement = () => {
                           </Button>
 
                         
-                          <Button
+                        {/*   <Button
                             onClick={() => handleDelete(post?.id)}
                             disabled={isDeleting}
                             variant="outline"
                             className="bg-red-50 w-[40%] cursor-pointer text-red-600 border-red-200 hover:bg-red-100 hover:text-red-700 hover:border-red-300 px-4 py-2 rounded-sm font-medium transition-colors"
                           >
                             {isDeleting ? "Deleting..." : "Delete"}
-                          </Button>
-                        </TableCell> */}
+                          </Button> */}
+                        </TableCell>
 
 
                       </TableRow>

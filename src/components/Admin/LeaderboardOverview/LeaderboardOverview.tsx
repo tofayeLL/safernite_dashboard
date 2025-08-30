@@ -105,6 +105,7 @@ const LeaderboardOverview = () => {
     <section>
       <div className="bg-white p-6 rounded-2xl shadow">
         <div className="w-full space-y-4">
+
           {/* Header with filters */}
           <div className="flex lg:flex-row flex-col items-center justify-between">
             <h2 className="text-xl font-semibold text-gray-900">
@@ -161,9 +162,9 @@ const LeaderboardOverview = () => {
                   <TableHead className="text-base font-semibold">
                     Raised Amount
                   </TableHead>
-                  <TableHead className="text-base font-semibold">
+                {/*   <TableHead className="text-base font-semibold">
                     Funding Percentage
-                  </TableHead>
+                  </TableHead> */}
                   {/* <TableHead className="text-base font-semibold">
                     Action
                   </TableHead> */}
@@ -198,9 +199,9 @@ const LeaderboardOverview = () => {
                       <TableCell className="py-3">€{item?.price}</TableCell>
                       <TableCell className="py-3">€{item?.raised}</TableCell>
 
-                      <TableCell className="text-gray-700 py-3">
+                     {/*  <TableCell className="text-gray-700 py-3">
                         <span className="text-[#52C41A]">100%</span>
-                      </TableCell>
+                      </TableCell> */}
                       {/*  <Badge
                         variant="secondary"
                         className={`px-5 py-1 text-base ${

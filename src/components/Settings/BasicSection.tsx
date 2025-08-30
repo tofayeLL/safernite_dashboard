@@ -16,9 +16,9 @@ import {
 } from "@/redux/api/settingsApi";
 import { toast } from "sonner";
 import { ImageUploader } from "../ui/ImageUploader";
-import userImage from "@/assets/images/userImage.jpg";
+import avatar from "@/assets/avatar.png";
 
-import { Loading } from "../ui/loading";
+// import { Loading } from "../ui/loading";
 import { useGetSingleUserQuery } from "@/redux/api/userApi";
 
 interface ProfileData {
@@ -28,14 +28,14 @@ interface ProfileData {
 
 const BasicSection = () => {
   const [active, setActive] = useState(false);
-  const { data: userProfile, isLoading: isProfileImageLoading } = useGetSingleUserQuery({});
+  const { data: userProfile } = useGetSingleUserQuery({});
 
   const [profile, setProfile] = useState<ProfileData>({
     userName: "",
     email: "",
   });
 
-  const { data, isLoading: isProfileLoading } = useGetMyProfileQuery({});
+  const { data } = useGetMyProfileQuery({});
   const [updateMyProfile, { isLoading }] = useUpdateMyProfileMutation();
   
 
@@ -81,7 +81,7 @@ const BasicSection = () => {
     }
   };
 
-   if (isLoading || isProfileLoading || isProfileImageLoading) {
+/*    if (isLoading ) {
     return (
       <div className="flex items-center justify-center min-h-[70vh] bg-white">
         <div className="flex items-center justify-center space-x-2">
@@ -89,7 +89,7 @@ const BasicSection = () => {
         </div>
       </div>
     );
-  }
+  } */
 
   return (
     <div className="">
@@ -117,7 +117,7 @@ const BasicSection = () => {
               </Label>
               <div className="relative w-24 h-24">
                 <Image
-                  src={userProfile?.result?.profileImage || userImage}
+                  src={userProfile?.result?.profileImage || avatar}
                   height={150}
                   width={150}
                   alt="Profile"

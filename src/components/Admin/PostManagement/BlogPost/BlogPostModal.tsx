@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { useGetSinglePostQuery } from "@/redux/api/postApi";
 import { Loading } from "@/components/ui/loading";
 import { useUpdateStatusMutation } from "@/redux/api/donationApi";
+import { toast } from "sonner";
 
 interface BlogPostModalProps {
   isOpen: boolean;
@@ -53,11 +54,12 @@ export const BlogPostModal: React.FC<BlogPostModalProps> = ({
       }).unwrap();
 
       console.log("Post approved:", response);
-      // Optionally close the modal or show a success message
+      // Update toast to success
+      toast.success("Post approved successfully!");
       onClose(false);
     } catch (error) {
       console.error("Failed to approve post:", error);
-      // Handle error (show error message to user)
+      toast.error("Failed to approve post. Please try again.");
     }
   };
 
@@ -69,11 +71,13 @@ export const BlogPostModal: React.FC<BlogPostModalProps> = ({
       }).unwrap();
 
       console.log("Post rejected:", response);
-      // Optionally close the modal or show a success message
+      // Update toast to success
+      toast.success("Post rejected successfully!");
       onClose(false);
     } catch (error) {
       console.error("Failed to reject post:", error);
-      // Handle error (show error message to user)
+      // Show error toast
+      toast.error("Failed to reject post. Please try again.");
     }
   };
 
@@ -91,9 +95,7 @@ export const BlogPostModal: React.FC<BlogPostModalProps> = ({
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[50%]">
         <DialogHeader>
-          <DialogTitle>
-            Blog Post Details 
-          </DialogTitle>
+          <DialogTitle>Blog Post Details</DialogTitle>
         </DialogHeader>
         <div className="pt-4">
           <Card className="w-full max-w-6xl mx-auto bg-white ">

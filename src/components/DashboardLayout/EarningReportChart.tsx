@@ -264,7 +264,7 @@ export default function CasesReportChart() {
         </div>
         
         {/* Additional info section */}
-        <div className="mt-6 pt-4 border-t border-gray-100">
+       {/*  <div className="mt-6 pt-4 border-t border-gray-100">
           <div className="flex justify-between items-center text-sm">
             <span className="text-gray-600">
               Data Status: <span className="font-medium text-gray-900">
@@ -277,7 +277,7 @@ export default function CasesReportChart() {
               </span>
             </span>
           </div>
-        </div>
+        </div> */}
       </CardContent>
     </Card>
   );
